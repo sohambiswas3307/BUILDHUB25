@@ -11,12 +11,12 @@ public class BuildHubFxApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/buildhub/views/landing.fxml"));
-            Scene scene = new Scene(loader.load(), 900, 600);
+            // Load the Login FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/buildhub/views/login.fxml"));
+            Scene scene = new Scene(loader.load(), 800, 600);
             
             // Set the scene
-            primaryStage.setTitle("BuildHub - Construction Platform");
+            primaryStage.setTitle("BuildHub - Login");
             primaryStage.setScene(scene);
             primaryStage.setMinWidth(800);
             primaryStage.setMinHeight(600);
@@ -25,7 +25,7 @@ public class BuildHubFxApp extends Application {
             primaryStage.show();
             
             System.out.println("🚀 BuildHub JavaFX Desktop App Started");
-            System.out.println("📱 Window opened successfully");
+            System.out.println("📱 Login window opened successfully");
             
         } catch (Exception e) {
             e.printStackTrace();

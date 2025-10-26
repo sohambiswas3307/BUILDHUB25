@@ -12,6 +12,10 @@
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
     
+    <VBox.spacing>
+        <Insets bottom="20"/>
+    </VBox.spacing>
+    
     <!-- Header -->
     <HBox spacing="20" alignment="CENTER_LEFT">
         <Text text="🏗️ BuildHub" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #4F46E5;" />
