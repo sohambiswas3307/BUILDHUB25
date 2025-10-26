@@ -49,7 +49,32 @@ public class LandingController {
 
     @FXML
     private void onGetStarted() {
-        onRegister();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("🏗️ Welcome to BuildHub");
+        alert.setHeaderText("Your One-Stop Platform for Construction Projects");
+        
+        String content = "BuildHub connects Customers, Contractors, and Labours for efficient construction project management.\n\n" +
+                        "✨ Key Features:\n\n" +
+                        "👤 For Customers:\n" +
+                        "  • Create and manage construction projects\n" +
+                        "  • Track budgets and purchased items\n" +
+                        "  • Hire contractors and labours\n" +
+                        "  • Rate and review completed work\n\n" +
+                        "🏗️ For Contractors:\n" +
+                        "  • Bid on construction projects\n" +
+                        "  • Showcase your portfolio\n" +
+                        "  • Build your reputation through ratings\n" +
+                        "  • Manage teams and project progress\n\n" +
+                        "🛠️ For Labours:\n" +
+                        "  • Find job opportunities\n" +
+                        "  • Set your hourly rate\n" +
+                        "  • Track work history\n" +
+                        "  • Build your professional profile\n\n" +
+                        "Ready to get started? Click 'Register' to create your account!";
+        
+        alert.setContentText(content);
+        alert.getDialogPane().setPrefWidth(600);
+        alert.showAndWait();
     }
 
     @FXML
