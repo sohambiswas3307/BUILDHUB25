@@ -33,9 +33,9 @@
               textAlignment="CENTER" wrappingWidth="550"/>
         
         <HBox spacing="14" alignment="CENTER" style="-fx-padding: 18 0 0 0;">
-            <Button text="Explore Features" fx:id="getStartedBtn" onAction="#onGetStarted" 
+            <Button text="Login" fx:id="heroLoginBtn" onAction="#onLogin" 
                     style="-fx-background-color: white; -fx-text-fill: #8B5CF6; -fx-font-size: 14px; -fx-font-weight: 600; -fx-padding: 12 28; -fx-background-radius: 10; -fx-cursor: hand; -fx-border-color: #8B5CF6; -fx-border-width: 2; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
-            <Button text="Get Started Free" 
+            <Button text="Sign Up" fx:id="heroRegisterBtn" onAction="#onRegister" 
                     style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 600; -fx-padding: 12 28; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(139, 92, 246, 0.4), 12, 0, 0, 6); -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
         </HBox>
     </VBox>
