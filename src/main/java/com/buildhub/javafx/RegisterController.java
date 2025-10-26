@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class RegisterController {
+    private DatabaseService dbService = new DatabaseService();
 
     @FXML
     private TextField nameField;
@@ -27,8 +28,6 @@ public class RegisterController {
     private RadioButton contractorRadio;
     @FXML
     private RadioButton labourRadio;
-    @FXML
-    private ToggleGroup roleGroup;
     @FXML
     private Button registerBtn;
     @FXML
@@ -61,14 +60,19 @@ public class RegisterController {
             role = "labour";
         }
 
-        // TODO: Implement actual registration with backend
-        showAlert("Registration", "Registration will connect to backend API. Role: " + role);
+        // Register with database
+        boolean success = dbService.registerUser(name, email, password, role, phone, address);
         
-        // Navigate to appropriate dashboard
-        try {
-            navigateToDashboard(role);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (success) {
+            showAlert("Success", "Registration successful! Role: " + role);
+            // Navigate to appropriate dashboard
+            try {
+                navigateToDashboard(role);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            showAlert("Error", "Registration failed. Email may already exist.");
         }
     }
 

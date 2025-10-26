@@ -6,8 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import java.util.Map;
 
 public class LoginController {
+    private DatabaseService dbService = new DatabaseService();
 
     @FXML
     private TextField emailField;
@@ -31,14 +33,21 @@ public class LoginController {
             return;
         }
 
-        // TODO: Implement actual login logic with backend
-        showAlert("Login", "Login functionality will connect to backend API");
+        // Login with database
+        Map<String, Object> user = dbService.loginUser(email, password);
         
-        // For now, navigate to customer dashboard as demo
-        try {
-            navigateToCustomerDashboard();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (user != null) {
+            String role = (String) user.get("role");
+            showAlert("Success", "Login successful! Welcome, " + user.get("name"));
+            
+            // Navigate to appropriate dashboard
+            try {
+                navigateToDashboard(role);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            showAlert("Error", "Invalid email or password");
         }
     }
 
@@ -55,10 +64,15 @@ public class LoginController {
     }
 
     private void navigateToCustomerDashboard() throws Exception {
+        navigateToDashboard("customer");
+    }
+    
+    private void navigateToDashboard(String role) throws Exception {
         Stage stage = (Stage) loginBtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/customer_dashboard.fxml"));
+        String dashboardPath = "/com/buildhub/views/" + role + "_dashboard.fxml";
+        Parent root = FXMLLoader.load(getClass().getResource(dashboardPath));
         stage.setScene(new Scene(root, 1200, 800));
-        stage.setTitle("Customer Dashboard - BuildHub");
+        stage.setTitle(role.substring(0, 1).toUpperCase() + role.substring(1) + " Dashboard - BuildHub");
     }
 
     private void showAlert(String title, String message) {

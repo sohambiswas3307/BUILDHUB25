@@ -43,10 +43,9 @@
                 <!-- Role Selection -->
                 <VBox spacing="10">
                     <Text text="Select Your Role:" style="-fx-font-weight: bold;"/>
-                    <ToggleGroup fx:id="roleGroup"/>
-                    <RadioButton fx:id="customerRadio" selected="true" text="Customer" toggleGroup="$roleGroup"/>
-                    <RadioButton fx:id="contractorRadio" text="Contractor" toggleGroup="$roleGroup"/>
-                    <RadioButton fx:id="labourRadio" text="Labour" toggleGroup="$roleGroup"/>
+                    <RadioButton fx:id="customerRadio" selected="true" text="Customer"/>
+                    <RadioButton fx:id="contractorRadio" text="Contractor"/>
+                    <RadioButton fx:id="labourRadio" text="Labour"/>
                 </VBox>
                 
                 <!-- Register Button -->
