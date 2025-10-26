@@ -20,9 +20,6 @@ public class LandingController {
     private Button getStartedBtn;
 
     @FXML
-    private Button learnMoreBtn;
-
-    @FXML
     private void onLogin() {
         try {
             Stage stage = (Stage) loginBtn.getScene().getWindow();
@@ -52,18 +49,9 @@ public class LandingController {
     }
 
     @FXML
-    private void onLearnMore() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("About BuildHub");
-        alert.setHeaderText(null);
-        alert.setContentText("BuildHub connects Customers, Contractors, and Labours for efficient project management. Create projects, find professionals, and build with confidence.");
-        alert.showAndWait();
-    }
-
-    @FXML
     private void onJoinCustomer() {
         try {
-            Stage stage = (Stage) learnMoreBtn.getScene().getWindow();
+            Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
             stage.setScene(new Scene(root, 800, 600));
             stage.setTitle("Register as Customer - BuildHub");
@@ -75,7 +63,7 @@ public class LandingController {
     @FXML
     private void onJoinContractor() {
         try {
-            Stage stage = (Stage) learnMoreBtn.getScene().getWindow();
+            Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
             stage.setScene(new Scene(root, 800, 600));
             stage.setTitle("Register as Contractor - BuildHub");
@@ -87,7 +75,7 @@ public class LandingController {
     @FXML
     private void onJoinLabour() {
         try {
-            Stage stage = (Stage) learnMoreBtn.getScene().getWindow();
+            Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
             stage.setScene(new Scene(root, 800, 600));
             stage.setTitle("Register as Labour - BuildHub");
