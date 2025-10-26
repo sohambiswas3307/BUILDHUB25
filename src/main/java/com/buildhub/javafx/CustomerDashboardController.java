@@ -26,11 +26,20 @@ public class CustomerDashboardController {
     @FXML
     private Button logoutBtn;
     @FXML
-    private Label profileName;
-    @FXML
-    private Label profileEmail;
+    private Label userNameLabel;
     @FXML
     private VBox projectsList;
+    
+    private Map<String, Object> currentUser;
+    
+    public void setCurrentUser(Map<String, Object> user) {
+        this.currentUser = user;
+        this.currentUserId = (int) user.get("id");
+        if (userNameLabel != null) {
+            userNameLabel.setText((String) user.get("name"));
+        }
+        loadProjects();
+    }
 
     @FXML
     private void onNewProject() {

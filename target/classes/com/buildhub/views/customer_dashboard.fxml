@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.CustomerDashboardController" prefHeight="800" prefWidth="1400" style="-fx-background-color: linear-gradient(to bottom, #E0E7FF 0%, #C7D2FE 100%); -fx-padding: 0;">
@@ -13,41 +11,10 @@
     <VBox prefHeight="800" prefWidth="1400" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 10); -fx-spacing: 0;" VBox.vgrow="ALWAYS">
         
         <!-- Header Bar -->
-        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12 12 0 0;">
-            <Label text="ASS1" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1E1B4B;"/>
-            <Label text="★" style="-fx-font-size: 20px; -fx-text-fill: #FBBF24;"/>
-            <Label text="Offline" style="-fx-font-size: 14px; -fx-text-fill: #EF4444;"/>
-            <Circle style="-fx-fill: #EF4444;" radius="4"/>
-            
+        <HBox alignment="CENTER_RIGHT" spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12 12 0 0;">
             <Region HBox.hgrow="ALWAYS"/>
-            
-            <Label text="Responsible Personnel:" style="-fx-font-size: 14px; -fx-text-fill: #6B7280;"/>
-            <Circle style="-fx-fill: #6366F1;" radius="15"/>
-            
-            <TextField promptText="Search" style="-fx-pref-width: 200; -fx-padding: 8;"/>
-            
-            <Button onAction="#onBack" style="-fx-background-color: transparent; -fx-cursor: hand;">
-                <graphic>
-                    <Label text="⇄" style="-fx-font-size: 18px;"/>
-                </graphic>
-            </Button>
-            
-            <Button style="-fx-background-color: transparent; -fx-cursor: hand;">
-                <graphic>
-                    <Label text="🔔" style="-fx-font-size: 18px;"/>
-                </graphic>
-            </Button>
-            
-            <Button style="-fx-background-color: transparent; -fx-cursor: hand;">
-                <graphic>
-                    <Label text="❓" style="-fx-font-size: 18px;"/>
-                </graphic>
-            </Button>
-            
-            <Circle style="-fx-fill: #6366F1;" radius="15"/>
-            <Label text="Name Surname" style="-fx-font-size: 14px; -fx-text-fill: #1E1B4B;"/>
-            
-            <Button fx:id="logoutBtn" onAction="#onLogout" style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 5; -fx-cursor: hand;" text="Logout"/>
+            <Label fx:id="userNameLabel" text="Customer" style="-fx-font-size: 14px; -fx-text-fill: #1E1B4B; -fx-font-weight: bold;"/>
+            <Button fx:id="logoutBtn" onAction="#onLogout" style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 5; -fx-cursor: hand; -fx-font-weight: bold;" text="Logout"/>
         </HBox>
         
         <!-- Body -->
@@ -70,24 +37,7 @@
                         <Text text="Dashboard" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-fill: white;"/>
                     </HBox>
                     
-                    <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 12;">
-                        <Label text="🌱" style="-fx-font-size: 18px;"/>
-                        <Text text="Projects" style="-fx-font-size: 14px; -fx-fill: white;"/>
-                    </HBox>
-                    
-                    <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 12;">
-                        <Label text="➕" style="-fx-font-size: 18px;"/>
-                        <Text text="Add New Project" style="-fx-font-size: 14px; -fx-fill: white;"/>
-                    </HBox>
-                    
-                    <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 12;">
-                        <Label text="⚙️" style="-fx-font-size: 18px;"/>
-                        <Text text="Settings" style="-fx-font-size: 14px; -fx-fill: white;"/>
-                    </HBox>
-                    
-                    <Button fx:id="newProjectBtn" onAction="#onNewProject" text="📥 Import Projects" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT;"/>
-                    
-                    <Button onAction="#onViewReports" text="👤 Admin Panel" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT;"/>
+                    <Button fx:id="newProjectBtn" onAction="#onNewProject" text="➕ Add New Project" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px;"/>
                 </VBox>
                 
                 <Region VBox.vgrow="ALWAYS"/>
@@ -126,4 +76,3 @@
         </HBox>
     </VBox>
 </VBox>
-
