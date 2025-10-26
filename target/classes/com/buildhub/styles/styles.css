@@ -1,0 +1,107 @@
+/* BuildHub JavaFX Styles */
+
+/* Buttons */
+.btn-primary {
+    -fx-background-color: #4F46E5;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #4338CA;
+}
+
+.btn-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #4F46E5;
+    -fx-font-weight: bold;
+    -fx-border-color: #4F46E5;
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #EEF2FF;
+}
+
+.btn-large-primary {
+    -fx-background-color: #4F46E5;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 15 30;
+    -fx-background-radius: 10;
+}
+
+.btn-large-primary:hover {
+    -fx-background-color: #4338CA;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.btn-large-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #4F46E5;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-color: #4F46E5;
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+    -fx-padding: 15 30;
+    -fx-background-radius: 10;
+}
+
+.btn-large-secondary:hover {
+    -fx-background-color: #EEF2FF;
+}
+
+.btn-customer {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+}
+
+.btn-customer:hover {
+    -fx-background-color: #1D4ED8;
+}
+
+.btn-contractor {
+    -fx-background-color: #059669;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+}
+
+.btn-contractor:hover {
+    -fx-background-color: #047857;
+}
+
+.btn-labour {
+    -fx-background-color: #D97706;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+}
+
+.btn-labour:hover {
+    -fx-background-color: #B45309;
+}
+
+/* Root style */
+.root {
+    -fx-background-color: #F9FAFB;
+}
+

@@ -62,11 +62,23 @@ mvn spring-boot:run
 
 Runs on port 8080. See [JAVA_SETUP.md](docs/JAVA_SETUP.md) for details.
 
+### 🖥️ JavaFX Desktop Application
+
+BuildHub includes a **native desktop application** built with JavaFX:
+
+```bash
+mvn clean package
+mvn javafx:run
+```
+
+Opens a native desktop window. See [JAVAFX_SETUP.md](docs/JAVAFX_SETUP.md) for details.
+
 **Why Java?**
 - Production-ready enterprise framework
 - Robust JDBC connection pooling
 - Type-safe, compiled code
 - Perfect for heavy computation or specialized APIs
+- **Desktop UI**: Native look and feel with JavaFX
 
 ### Usage
 
