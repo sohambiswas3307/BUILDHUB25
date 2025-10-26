@@ -36,15 +36,20 @@ public class CustomerDashboardController {
     }
 
     @FXML
-    private void onLogout() {
+    private void onBack() {
         try {
             Stage stage = (Stage) logoutBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/landing.fxml"));
-            stage.setScene(new Scene(root, 900, 600));
+            stage.setScene(new Scene(root, 1000, 700));
             stage.setTitle("BuildHub - Construction Platform");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void onLogout() {
+        onBack();
     }
 
     private void showAlert(String title, String message) {

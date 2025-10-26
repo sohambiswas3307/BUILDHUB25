@@ -8,6 +8,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LoginController" prefHeight="600" prefWidth="800">
     <children>
+        <!-- Back Button -->
+        <Button text="← Back" onAction="#onBack" style="-fx-background-color: rgba(255,255,255,0.8); -fx-text-fill: #4F46E5; -fx-font-weight: bold; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8 15;" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20"/>
+        
         <!-- Background -->
         <Pane style="-fx-background-color: linear-gradient(to bottom, #4F46E5, #7C3AED);" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
         

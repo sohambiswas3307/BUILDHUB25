@@ -84,6 +84,18 @@ public class RegisterController {
         stage.setTitle("Login - BuildHub");
     }
 
+    @FXML
+    private void onBack() {
+        try {
+            Stage stage = (Stage) registerBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/landing.fxml"));
+            stage.setScene(new Scene(root, 1000, 700));
+            stage.setTitle("BuildHub - Construction Platform");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void navigateToDashboard(String role) throws Exception {
         Stage stage = (Stage) registerBtn.getScene().getWindow();
         String dashboardPath = "/com/buildhub/views/" + role + "_dashboard.fxml";

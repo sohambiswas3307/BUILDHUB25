@@ -75,6 +75,18 @@ public class LoginController {
         stage.setTitle(role.substring(0, 1).toUpperCase() + role.substring(1) + " Dashboard - BuildHub");
     }
 
+    @FXML
+    private void onBack() {
+        try {
+            Stage stage = (Stage) loginBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/landing.fxml"));
+            stage.setScene(new Scene(root, 1000, 700));
+            stage.setTitle("BuildHub - Construction Platform");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
