@@ -18,19 +18,38 @@ A one-stop platform connecting Customers, Contractors, and Labours. Designed to 
 
 ## Getting Started
 
-### Installation
+### 🚀 Quick Start (Simple - Recommended)
 
 ```bash
+# 1. Install all dependencies
 npm run install-all
+
+# 2. Build and start unified server
+npm run build-and-start
 ```
 
-### Development
+**This starts everything on a single port!** 
+- Visit: http://localhost:5000
+- API: http://localhost:5000/api
+- Backend + Frontend + Database all running together
+
+### 💻 Development Mode
 
 ```bash
 npm run dev
 ```
 
-This will start both the backend server (on port 5000) and frontend (on port 3000).
+Runs both servers separately:
+- Frontend: http://localhost:3000 (with hot reload)
+- Backend: http://localhost:5000
+
+### 📦 Production
+
+```bash
+npm start
+```
+
+Runs the unified server serving the built React app.
 
 ### Usage
 

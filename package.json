@@ -4,10 +4,13 @@
   "description": "BuildHub - A one-stop platform connecting Customers, Contractors, and Labours",
   "main": "server/index.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev:api": "nodemon server/index.js",
     "server": "nodemon server/index.js",
     "client": "cd client && npm start",
     "build": "cd client && npm run build",
+    "build-and-start": "npm run build && npm start",
     "install-all": "npm install && cd client && npm install"
   },
   "keywords": ["construction", "labour", "contractor", "project-management"],

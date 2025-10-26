@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import CustomerDashboard from './components/dashboards/CustomerDashboard';
-import ContractorDashboard from './components/dashboards/ContractorDashboard';
-import LabourDashboard from './components/dashboards/LabourDashboard';
+import LandingPage from './views/LandingPage';
+import Login from './views/auth/Login';
+import Register from './views/auth/Register';
+import CustomerDashboard from './views/dashboards/CustomerDashboard';
+import ContractorDashboard from './views/dashboards/ContractorDashboard';
+import LabourDashboard from './views/dashboards/LabourDashboard';
 import AuthContext from './context/AuthContext';
 
 function App() {
