@@ -12,7 +12,8 @@ A one-stop platform connecting Customers, Contractors, and Labours. Designed to 
 
 ## Tech Stack
 
-- **Backend**: Node.js, Express, SQLite3
+- **Backend**: Node.js/Express (port 5000) OR Java Spring Boot (port 8080)
+- **Database**: SQLite3 with JDBC
 - **Frontend**: React, Tailwind CSS
 - **Authentication**: JWT
 
@@ -50,6 +51,22 @@ npm start
 ```
 
 Runs the unified server serving the built React app.
+
+### ☕ Java Backend (Alternative)
+
+BuildHub also supports a **Java Spring Boot** backend with **JDBC**:
+
+```bash
+mvn spring-boot:run
+```
+
+Runs on port 8080. See [JAVA_SETUP.md](JAVA_SETUP.md) for details.
+
+**Why Java?**
+- Production-ready enterprise framework
+- Robust JDBC connection pooling
+- Type-safe, compiled code
+- Perfect for heavy computation or specialized APIs
 
 ### Usage
 
