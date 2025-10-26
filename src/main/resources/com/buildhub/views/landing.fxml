@@ -3,74 +3,74 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController" spacing="30">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController" alignment="CENTER" spacing="40" style="-fx-background-color: linear-gradient(to bottom, #E0E7FF 0%, #C7D2FE 100%);">
     
     <padding>
-        <Insets top="30" right="50" bottom="30" left="50"/>
+        <Insets top="50" right="50" bottom="50" left="50"/>
     </padding>
     
     <!-- Header -->
-    <HBox spacing="20" alignment="CENTER_LEFT">
-        <Text text="🏗️ BuildHub" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #4F46E5;" />
+    <HBox spacing="20" alignment="CENTER">
+        <Text text="🏗️" style="-fx-font-size: 32px;"/>
+        <Text text="BuildHub" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #1E1B4B;" />
         <Region HBox.hgrow="ALWAYS"/>
-        <Button text="Login" fx:id="loginBtn" onAction="#onLogin" styleClass="btn-primary" />
-        <Button text="Register" fx:id="registerBtn" onAction="#onRegister" styleClass="btn-secondary" />
+        <Button text="Login" fx:id="loginBtn" onAction="#onLogin" style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;" />
+        <Button text="Register" fx:id="registerBtn" onAction="#onRegister" style="-fx-background-color: white; -fx-text-fill: #8B5CF6; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-border-color: #8B5CF6; -fx-border-width: 2; -fx-cursor: hand;" />
     </HBox>
     
     <!-- Hero Section -->
-    <VBox alignment="CENTER" spacing="15" style="-fx-background-color: #E0E7FF; -fx-background-radius: 15; -fx-padding: 40;">
+    <VBox alignment="CENTER" spacing="20">
         <Text text="Your One-Stop Platform for Construction Projects" 
-              style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #1E1B4B;" 
-              textAlignment="CENTER" wrappingWidth="800"/>
+              style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-fill: #1E1B4B;" 
+              textAlignment="CENTER" wrappingWidth="900"/>
         
         <Text text="Connecting Customers, Contractors, and Labours to build the future, together." 
-              style="-fx-font-size: 16px; -fx-fill: #4B5563;" 
+              style="-fx-font-size: 18px; -fx-fill: #6B7280;" 
               textAlignment="CENTER" wrappingWidth="700"/>
         
-        <HBox spacing="15" alignment="CENTER">
-            <Button text="Get Started →" fx:id="getStartedBtn" onAction="#onGetStarted" 
-                    styleClass="btn-large-primary" />
-            <Button text="Learn More" fx:id="learnMoreBtn" onAction="#onLearnMore" 
-                    styleClass="btn-large-secondary" />
+        <HBox spacing="20" alignment="CENTER">
+            <Button text="Get Started" fx:id="getStartedBtn" onAction="#onGetStarted" 
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15 40; -fx-background-radius: 10; -fx-cursor: hand;" />
         </HBox>
     </VBox>
     
     <!-- User Roles Section -->
-    <Text text="How BuildHub Works" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: #1E1B4B;" />
+    <Text text="Choose Your Role" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #1E1B4B;" />
     
-    <HBox spacing="20" alignment="CENTER">
+    <HBox spacing="30" alignment="CENTER">
         <!-- Customer Card -->
-        <VBox style="-fx-background-color: #DBEAFE; -fx-background-radius: 10; -fx-padding: 20;" spacing="10" alignment="CENTER" prefWidth="250">
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30;" spacing="15" alignment="CENTER" prefWidth="280">
             <Text text="👷" style="-fx-font-size: 48px;"/>
-            <Text text="Customers" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #1E40AF;"/>
+            <Text text="Customer" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #1E1B4B;"/>
             <Text text="Post projects, hire contractors and labours, track progress and budgets." 
-                  style="-fx-font-size: 12px; -fx-fill: #4B5563; -fx-wrap-text: true;" 
-                  wrappingWidth="220" textAlignment="CENTER"/>
-            <Button text="Join as Customer" onAction="#onJoinCustomer" styleClass="btn-customer"/>
+                  style="-fx-font-size: 13px; -fx-fill: #6B7280; -fx-wrap-text: true;" 
+                  wrappingWidth="240" textAlignment="CENTER"/>
+            <Button text="Join as Customer" fx:id="joinCustomerBtn" onAction="#onJoinCustomer" 
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
         </VBox>
         
         <!-- Contractor Card -->
-        <VBox style="-fx-background-color: #D1FAE5; -fx-background-radius: 10; -fx-padding: 20;" spacing="10" alignment="CENTER" prefWidth="250">
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30;" spacing="15" alignment="CENTER" prefWidth="280">
             <Text text="🏗️" style="-fx-font-size: 48px;"/>
-            <Text text="Contractors" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #065F46;"/>
+            <Text text="Contractor" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #1E1B4B;"/>
             <Text text="Bid on projects, manage teams, showcase your portfolio, gain approvals." 
-                  style="-fx-font-size: 12px; -fx-fill: #4B5563; -fx-wrap-text: true;" 
-                  wrappingWidth="220" textAlignment="CENTER"/>
-            <Button text="Join as Contractor" onAction="#onJoinContractor" styleClass="btn-contractor"/>
+                  style="-fx-font-size: 13px; -fx-fill: #6B7280; -fx-wrap-text: true;" 
+                  wrappingWidth="240" textAlignment="CENTER"/>
+            <Button text="Join as Contractor" fx:id="joinContractorBtn" onAction="#onJoinContractor" 
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
         </VBox>
         
         <!-- Labour Card -->
-        <VBox style="-fx-background-color: #FEF3C7; -fx-background-radius: 10; -fx-padding: 20;" spacing="10" alignment="CENTER" prefWidth="250">
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30;" spacing="15" alignment="CENTER" prefWidth="280">
             <Text text="🛠️" style="-fx-font-size: 48px;"/>
-            <Text text="Labours" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #92400E;"/>
+            <Text text="Labour" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #1E1B4B;"/>
             <Text text="Find job opportunities, track work hours, build your reputation and get paid." 
-                  style="-fx-font-size: 12px; -fx-fill: #4B5563; -fx-wrap-text: true;" 
-                  wrappingWidth="220" textAlignment="CENTER"/>
-            <Button text="Join as Labour" onAction="#onJoinLabour" styleClass="btn-labour"/>
+                  style="-fx-font-size: 13px; -fx-fill: #6B7280; -fx-wrap-text: true;" 
+                  wrappingWidth="240" textAlignment="CENTER"/>
+            <Button text="Join as Labour" fx:id="joinLabourBtn" onAction="#onJoinLabour" 
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
         </VBox>
     </HBox>
 </VBox>
-
