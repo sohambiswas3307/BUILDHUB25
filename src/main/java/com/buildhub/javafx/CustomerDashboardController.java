@@ -206,7 +206,7 @@ public class CustomerDashboardController {
             Label locationLabel = new Label("📍 " + (location != null ? location : "N/A"));
             locationLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #4B5563;");
             
-            Label budgetLabel = new Label("💰 Budget: $" + (budget != null ? String.format("%.2f", budget) : "0.00"));
+            Label budgetLabel = new Label("💰 Budget: ₹" + (budget != null ? String.format("%.2f", budget) : "0.00"));
             budgetLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #4B5563;");
             
             projectCard.getChildren().addAll(titleBox, locationLabel, budgetLabel);
