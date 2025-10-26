@@ -56,7 +56,7 @@ public class LoginController {
         try {
             Stage stage = (Stage) loginBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
-            stage.setScene(new Scene(root, 800, 600));
+            stage.setScene(new Scene(root, 1000, 700));
             stage.setTitle("Register - BuildHub");
         } catch (Exception e) {
             e.printStackTrace();
