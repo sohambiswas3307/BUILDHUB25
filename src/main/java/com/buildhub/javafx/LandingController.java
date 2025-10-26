@@ -127,19 +127,17 @@ public class LandingController implements Initializable {
     }
     
     private void transitionToScene(Stage stage, Scene newScene) {
-        // Fade out current scene with smooth easing
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(400), stage.getScene().getRoot());
+        // Quick fade out for smooth transition
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(250), stage.getScene().getRoot());
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
-        fadeOut.setInterpolator(Interpolator.EASE_OUT);
         fadeOut.setOnFinished(e -> {
             // Set new scene
             stage.setScene(newScene);
-            // Fade in new scene with smooth easing
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newScene.getRoot());
+            // Quick fade in for smooth transition
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(300), newScene.getRoot());
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
-            fadeIn.setInterpolator(Interpolator.EASE_IN);
             fadeIn.play();
         });
         fadeOut.play();
@@ -162,13 +160,13 @@ public class LandingController implements Initializable {
     private void createAnimatedBackground() {
         if (rootPane == null) return;
         
-        // Create floating circles
-        for (int i = 0; i < 5; i++) {
+        // Create fewer floating circles for better performance
+        for (int i = 0; i < 3; i++) {
             Circle circle = new Circle();
-            circle.setRadius(Math.random() * 50 + 20);
-            circle.setFill(javafx.scene.paint.Color.rgb(139, 92, 246, 0.1));
-            circle.setStroke(javafx.scene.paint.Color.rgb(139, 92, 246, 0.3));
-            circle.setStrokeWidth(2);
+            circle.setRadius(Math.random() * 40 + 20);
+            circle.setFill(javafx.scene.paint.Color.rgb(139, 92, 246, 0.08));
+            circle.setStroke(javafx.scene.paint.Color.rgb(139, 92, 246, 0.2));
+            circle.setStrokeWidth(1);
             
             // Random starting position
             circle.setCenterX(Math.random() * 1000);
@@ -177,7 +175,7 @@ public class LandingController implements Initializable {
             rootPane.getChildren().add(0, circle); // Add to back
             animatedCircles.add(circle);
             
-            // Create floating animation
+            // Create simplified floating animation
             animateFloatingCircle(circle);
         }
     }
@@ -186,28 +184,20 @@ public class LandingController implements Initializable {
         double startX = circle.getCenterX();
         double startY = circle.getCenterY();
         
-        // Create parallel animations for X and Y
+        // Simplified animation with less computation
         Timeline timeline = new Timeline();
         
         KeyValue kv1 = new KeyValue(circle.centerXProperty(), 
-            startX + (Math.random() - 0.5) * 200, Interpolator.EASE_BOTH);
+            startX + (Math.random() - 0.5) * 150);
         KeyValue kv2 = new KeyValue(circle.centerYProperty(), 
-            startY + (Math.random() - 0.5) * 200, Interpolator.EASE_BOTH);
+            startY + (Math.random() - 0.5) * 150);
         
-        KeyFrame kf = new KeyFrame(Duration.seconds(8 + Math.random() * 4), kv1, kv2);
+        KeyFrame kf = new KeyFrame(Duration.seconds(6), kv1, kv2);
         timeline.getKeyFrames().add(kf);
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(true);
         
-        // Opacity animation for subtle fade
-        FadeTransition fade = new FadeTransition(Duration.seconds(4 + Math.random() * 2), circle);
-        fade.setFromValue(0.3);
-        fade.setToValue(0.6);
-        fade.setCycleCount(Animation.INDEFINITE);
-        fade.setAutoReverse(true);
-        
         timeline.play();
-        fade.play();
     }
 }
 

@@ -1,7 +1,6 @@
 package com.buildhub.javafx;
 
 import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -130,19 +129,17 @@ public class RegisterController {
     }
     
     private void transitionToScene(Stage stage, Scene newScene) {
-        // Fade out current scene with smooth easing
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(400), stage.getScene().getRoot());
+        // Quick fade out for smooth transition
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(250), stage.getScene().getRoot());
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
-        fadeOut.setInterpolator(Interpolator.EASE_OUT);
         fadeOut.setOnFinished(e -> {
             // Set new scene
             stage.setScene(newScene);
-            // Fade in new scene with smooth easing
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newScene.getRoot());
+            // Quick fade in for smooth transition
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(300), newScene.getRoot());
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
-            fadeIn.setInterpolator(Interpolator.EASE_IN);
             fadeIn.play();
         });
         fadeOut.play();
