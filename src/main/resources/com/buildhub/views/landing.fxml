@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController" prefHeight="700" prefWidth="1000" style="-fx-background-color: white;">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController" prefHeight="700" prefWidth="1000" style="-fx-background-color: #F8F9FA;">
     
     <!-- Professional Header - Fixed at top -->
     <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20;" prefHeight="80" maxHeight="80">
@@ -23,8 +23,8 @@
     </HBox>
     
     <!-- Scrollable Content Area -->
-    <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: white; -fx-border-color: transparent;">
-        <VBox alignment="CENTER" spacing="35" style="-fx-background-color: white; -fx-padding: 30 40;">
+    <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: #F8F9FA; -fx-border-color: transparent;">
+        <VBox alignment="CENTER" spacing="35" style="-fx-background-color: #F8F9FA; -fx-padding: 30 40;">
     
     <!-- Hero Section -->
     <VBox alignment="CENTER" spacing="18" prefWidth="700">

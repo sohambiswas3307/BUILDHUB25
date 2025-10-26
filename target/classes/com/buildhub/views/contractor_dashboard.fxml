@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.ContractorDashboardController" prefHeight="800" prefWidth="1400" style="-fx-background-color: white; -fx-padding: 0;">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.ContractorDashboardController" prefHeight="800" prefWidth="1400" style="-fx-background-color: #F8F9FA; -fx-padding: 0;">
     
     <!-- Main Container with Shadow -->
-    <VBox prefHeight="800" prefWidth="1400" style="-fx-background-color: white; -fx-border-color: #000000; -fx-border-width: 1; -fx-spacing: 0;" VBox.vgrow="ALWAYS">
+    <VBox prefHeight="800" prefWidth="1400" style="-fx-background-color: #F8F9FA; -fx-border-color: #000000; -fx-border-width: 1; -fx-spacing: 0;" VBox.vgrow="ALWAYS">
         
         <!-- Header Bar -->
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white; -fx-padding: 20;">
@@ -55,7 +55,7 @@
             </VBox>
             
             <!-- White Main Content Area -->
-            <VBox spacing="20" VBox.vgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 30;">
+            <VBox spacing="20" VBox.vgrow="ALWAYS" style="-fx-background-color: #F8F9FA; -fx-padding: 30;">
                 <!-- Welcome Section -->
                 <VBox spacing="5">
                     <Text text="Welcome back, Contractor!" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #000000;"/>

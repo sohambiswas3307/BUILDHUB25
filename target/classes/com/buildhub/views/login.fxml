@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LoginController" prefHeight="700" prefWidth="1000" style="-fx-background-color: white;">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LoginController" prefHeight="700" prefWidth="1000" style="-fx-background-color: #F8F9FA;">
     <children>
         <!-- Header with Back Button -->
         <HBox alignment="CENTER_LEFT" style="-fx-padding: 20;">
