@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController" alignment="CENTER" spacing="35" style="-fx-background-color: #FAFBFC; -fx-padding: 30 40;">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController" prefHeight="700" prefWidth="1000" style="-fx-background-color: #FAFBFC;">
     
-    <!-- Professional Header -->
-    <HBox spacing="15" alignment="CENTER" style="-fx-padding: 0;">
+    <!-- Professional Header - Fixed at top -->
+    <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20;" prefHeight="80" maxHeight="80">
         <HBox spacing="10" alignment="CENTER">
             <Text text="🏗️" style="-fx-font-size: 28px;"/>
             <Text text="BuildHub" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-fill: #1E1B4B; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
@@ -21,6 +21,10 @@
                     style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 600; -fx-padding: 10 24; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(139, 92, 246, 0.3), 8, 0, 0, 4);" />
         </HBox>
     </HBox>
+    
+    <!-- Scrollable Content Area -->
+    <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+        <VBox alignment="CENTER" spacing="35" style="-fx-background-color: #FAFBFC; -fx-padding: 30 40;">
     
     <!-- Hero Section -->
     <VBox alignment="CENTER" spacing="18" prefWidth="700">
@@ -84,4 +88,6 @@
                     style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 13px; -fx-padding: 10 22; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
         </VBox>
     </HBox>
+        </VBox>
+    </ScrollPane>
 </VBox>
