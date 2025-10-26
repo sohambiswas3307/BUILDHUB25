@@ -8,20 +8,33 @@ import java.util.Map;
 
 public class DatabaseService {
     private static final String DB_PATH = "jdbc:sqlite:./buildhub.db";
-    private Connection connection;
+    private static Connection connection;
+    private static boolean initialized = false;
 
     public DatabaseService() {
-        try {
-            connection = DriverManager.getConnection(DB_PATH);
-            System.out.println("✅ Connected to SQLite database from JavaFX");
-            initializeTables();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        synchronized (DatabaseService.class) {
+            try {
+                if (connection == null || connection.isClosed()) {
+                    connection = DriverManager.getConnection(DB_PATH);
+                    System.out.println("✅ Connected to SQLite database from JavaFX");
+                }
+                if (!initialized) {
+                    initializeTables();
+                    initialized = true;
+                }
+            } catch (SQLException e) {
+                System.err.println("❌ Database connection error: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
     }
 
+    private Connection getConnection() {
+        return connection;
+    }
+
     private void initializeTables() {
-        try {
+        try (Statement stmt = connection.createStatement()) {
             // Create users table if it doesn't exist
             String createUsersTable = """
                 CREATE TABLE IF NOT EXISTS users (
@@ -51,7 +64,7 @@ public class DatabaseService {
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
                 """;
-            connection.createStatement().execute(createUsersTable);
+            stmt.execute(createUsersTable);
 
             // Create projects table if it doesn't exist
             String createProjectsTable = """
@@ -75,7 +88,7 @@ public class DatabaseService {
                     FOREIGN KEY (assigned_contractor_id) REFERENCES users(id)
                 )
                 """;
-            connection.createStatement().execute(createProjectsTable);
+            stmt.execute(createProjectsTable);
 
             // Create labour_work_history table
             String createLabourWorkHistoryTable = """
@@ -96,7 +109,7 @@ public class DatabaseService {
                     FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
                 )
                 """;
-            connection.createStatement().execute(createLabourWorkHistoryTable);
+            stmt.execute(createLabourWorkHistoryTable);
 
             // Create disputes table
             String createDisputesTable = """
@@ -117,7 +130,7 @@ public class DatabaseService {
                     FOREIGN KEY (labour_id) REFERENCES users(id)
                 )
                 """;
-            connection.createStatement().execute(createDisputesTable);
+            stmt.execute(createDisputesTable);
 
             // Create purchased_items table
             String createPurchasedItemsTable = """
@@ -136,7 +149,7 @@ public class DatabaseService {
                     FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
                 )
                 """;
-            connection.createStatement().execute(createPurchasedItemsTable);
+            stmt.execute(createPurchasedItemsTable);
 
             // Create consultations table
             String createConsultationsTable = """
@@ -152,88 +165,110 @@ public class DatabaseService {
                     FOREIGN KEY (contractor_id) REFERENCES users(id)
                 )
                 """;
-            connection.createStatement().execute(createConsultationsTable);
+            stmt.execute(createConsultationsTable);
 
             System.out.println("✅ Database tables initialized");
         } catch (SQLException e) {
+            System.err.println("❌ Error initializing tables: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     public boolean registerUser(String name, String email, String password, String role, String phone, String address) {
-        try {
-            String sql = "INSERT INTO users (name, email, password, role, phone, address, license_number) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, name);
-            stmt.setString(2, email);
-            stmt.setString(3, password); // In production, hash this password
-            stmt.setString(4, role);
-            stmt.setString(5, phone);
-            stmt.setString(6, address);
-            stmt.setString(7, "");
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+        synchronized (DatabaseService.class) {
+            try {
+                String sql = "INSERT INTO users (name, email, password, role, phone, address, license_number) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
+                stmt.setString(1, name);
+                stmt.setString(2, email);
+                stmt.setString(3, password); // In production, hash this password
+                stmt.setString(4, role);
+                stmt.setString(5, phone);
+                stmt.setString(6, address);
+                stmt.setString(7, "");
+                stmt.executeUpdate();
+                stmt.close();
+                System.out.println("✅ User registered: " + email);
+                return true;
+            } catch (SQLException e) {
+                System.err.println("❌ Registration error: " + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
         }
     }
 
     public Map<String, Object> loginUser(String email, String password) {
-        try {
-            String sql = "SELECT * FROM users WHERE email = ?";
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, email);
-            ResultSet rs = stmt.executeQuery();
+        synchronized (DatabaseService.class) {
+            try {
+                String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
+                stmt.setString(1, email);
+                stmt.setString(2, password);
+                ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
-                // In production, verify hashed password
-                Map<String, Object> user = new HashMap<>();
-                user.put("id", rs.getInt("id"));
-                user.put("name", rs.getString("name"));
-                user.put("email", rs.getString("email"));
-                user.put("role", rs.getString("role"));
-                user.put("phone", rs.getString("phone"));
-                user.put("address", rs.getString("address"));
-                return user;
+                if (rs.next()) {
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("id", rs.getInt("id"));
+                    user.put("name", rs.getString("name"));
+                    user.put("email", rs.getString("email"));
+                    user.put("role", rs.getString("role"));
+                    user.put("phone", rs.getString("phone"));
+                    user.put("address", rs.getString("address"));
+                    rs.close();
+                    stmt.close();
+                    System.out.println("✅ User logged in: " + email);
+                    return user;
+                }
+                rs.close();
+                stmt.close();
+            } catch (SQLException e) {
+                System.err.println("❌ Login error: " + e.getMessage());
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public List<Map<String, Object>> getProjectsByCustomer(int customerId) {
         List<Map<String, Object>> projects = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM projects WHERE customer_id = ?";
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, customerId);
-            ResultSet rs = stmt.executeQuery();
+        synchronized (DatabaseService.class) {
+            try {
+                String sql = "SELECT * FROM projects WHERE customer_id = ?";
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
+                stmt.setInt(1, customerId);
+                ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                Map<String, Object> project = new HashMap<>();
-                project.put("id", rs.getInt("id"));
-                project.put("title", rs.getString("title"));
-                project.put("description", rs.getString("description"));
-                project.put("budget", rs.getDouble("budget"));
-                project.put("status", rs.getString("status"));
-                project.put("location", rs.getString("location"));
-                projects.add(project);
+                while (rs.next()) {
+                    Map<String, Object> project = new HashMap<>();
+                    project.put("id", rs.getInt("id"));
+                    project.put("title", rs.getString("title"));
+                    project.put("description", rs.getString("description"));
+                    project.put("budget", rs.getDouble("budget"));
+                    project.put("status", rs.getString("status"));
+                    project.put("location", rs.getString("location"));
+                    projects.add(project);
+                }
+                rs.close();
+                stmt.close();
+            } catch (SQLException e) {
+                System.err.println("❌ Error fetching projects: " + e.getMessage());
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return projects;
     }
 
-    public void close() {
-        try {
-            if (connection != null) {
-                connection.close();
+    public static void close() {
+        synchronized (DatabaseService.class) {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                    System.out.println("✅ Database connection closed");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }
