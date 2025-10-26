@@ -1,107 +1,137 @@
-# BuildHub - Construction Platform
+# 🏗️ BuildHub - Construction Management Platform
 
-A one-stop platform connecting Customers, Contractors, and Labours. Designed to simplify project management, hiring, and collaboration.
+A modern, desktop-based platform connecting Customers, Contractors, and Labours for efficient construction project management.
 
-## Features
+## 📋 Overview
 
-- **Multi-User System**: Separate interfaces for Customers, Contractors, and Labours
-- **Project Management**: Create, track, and manage construction projects
-- **Transparent Hiring**: Browse and post job opportunities
-- **Trust & Transparency**: Ratings, reviews, and verification system
-- **Efficient Collaboration**: Real-time updates and communication
+BuildHub is a JavaFX desktop application that simplifies construction project management, hiring, and collaboration, ensuring transparency, trust, and efficiency in the construction ecosystem.
 
-## Tech Stack
+## ✨ Features
 
-- **Desktop Application**: JavaFX (Native UI)
-- **Backend**: Java Spring Boot
-- **Database**: SQLite3 with JDBC
-- **Authentication**: JWT with BCrypt password hashing
+- **Multi-Role System**: Separate dashboards for Customers, Contractors, and Labours
+- **Project Management**: Create, track, edit, and manage construction projects
+- **Trust & Transparency**: Ratings, reviews, and approval tracking
+- **Cost Tracking**: Track purchased items and project budgets
+- **Modern UI**: Purple gradient theme with dark sidebar navigation
+- **SQLite Database**: Lightweight, local database with automatic schema initialization
 
-## Getting Started
+## 🚀 Quick Start
 
-### 🖥️ Running the JavaFX Desktop Application
+### Prerequisites
 
-BuildHub is a **native desktop application** built with JavaFX:
+- Java 17 or higher
+- Maven 3.8+
+
+### Run the Application
 
 ```bash
-# Compile and run the application
+# Clone the repository
+git clone https://github.com/sohambiswas3307/BUILDHUB25.git
+cd BUILDHUB25
+
+# Run the JavaFX application
 mvn javafx:run
 ```
 
-This opens a native desktop window with the full BuildHub interface.
+## 🎨 UI Theme
 
-### ☕ Java Spring Boot Backend (API Server)
+- **Purple Gradient Background**: Soft purple (#E0E7FF to #C7D2FE)
+- **Dark Sidebar**: #1E1B4B navigation bar with BuildHub branding
+- **White Content Area**: Clean, modern card-based design
+- **Indian Currency**: All monetary values displayed in ₹ (INR)
 
-To run the Spring Boot backend API server:
+## 📁 Project Structure
 
-```bash
-# Run the Spring Boot server
-mvn spring-boot:run
+```
+BUILDHUB25/
+├── src/
+│   └── main/
+│       ├── java/com/buildhub/
+│       │   ├── javafx/          # JavaFX controllers
+│       │   ├── controller/      # Spring Boot controllers
+│       │   ├── service/         # Business logic
+│       │   ├── model/           # Data models
+│       │   └── config/          # Configuration
+│       └── resources/
+│           ├── com/buildhub/
+│           │   ├── views/       # FXML layouts
+│           │   └── styles/      # CSS files
+│           └── application.properties
+├── database/
+│   ├── schema.sql               # Database schema
+│   └── README.md                # Database documentation
+├── pom.xml                       # Maven configuration
+└── README.md                     # This file
 ```
 
-Runs on port 8080. Provides REST API endpoints for user management, authentication, and project operations.
+## 🔧 Configuration
 
-### 🔨 Building for Production
+Main configuration: `src/main/resources/application.properties`
+Database path: `./buildhub.db` (auto-created on first run)
 
-```bash
-# Clean and compile
-mvn clean compile
+## 📊 Database Schema
 
-# Run JavaFX application
-mvn javafx:run
+The application uses SQLite with the following main tables:
 
-# Or run Spring Boot server
-mvn spring-boot:run
-```
+- `users` - User accounts with role-specific fields
+- `projects` - Construction projects
+- `labour_work_history` - Labour work tracking
+- `disputes` - Dispute management
+- `purchased_items` - Cost tracking
+- `consultations` - Customer-Contractor consultations
 
-See [docs/JAVAFX_SETUP.md](docs/JAVAFX_SETUP.md) and [docs/JAVA_SETUP.md](docs/JAVA_SETUP.md) for detailed setup instructions.
+See `database/schema.sql` for complete schema details.
 
-**Why Java/JavaFX?**
-- **Native Desktop UI**: Better performance and native look-and-feel
-- **Production-Ready**: Enterprise-grade framework
-- **Type-Safe**: Compile-time error checking
-- **Database Access**: Direct JDBC connection to SQLite
-- **Cross-Platform**: Works on Windows, macOS, and Linux
-- **No Browser Required**: Run as a standalone desktop application
-
-### Usage
-
-1. Launch the application with `mvn javafx:run`
-2. Register as Customer, Contractor, or Labour
-3. Access your dedicated dashboard
-4. Create projects, post jobs, or find opportunities
-5. Manage your workflow efficiently
-
-## User Roles
+## 👥 User Roles
 
 ### Customer
-- Post construction projects
+- Create and manage construction projects
+- Track project budgets and expenses
 - Hire contractors and labours
-- Track project progress
-- Manage budgets and payments
-- Edit and delete projects
+- View project progress
 
 ### Contractor
-- Bid on projects
-- Manage teams and labours
-- Track work progress
-- Get paid for completed work
-- Build portfolio and ratings
+- Browse and bid on projects
+- Manage portfolio and ratings
+- Track completed work
+- Showcase specialization
 
 ### Labour
 - Find job opportunities
-- Apply for positions
-- Track work hours
-- Receive payments
+- Track work hours and wages
 - Build reputation through ratings
+- Manage availability
 
-## Configuration
+## 💻 Running Options
 
-The application uses SQLite for database storage. The database file `buildhub.db` is created automatically in the project directory.
+### Desktop Application (Recommended)
+```bash
+mvn javafx:run
+```
 
-Main configuration file: `src/main/resources/application.properties`
+### Spring Boot Server
+```bash
+mvn spring-boot:run
+```
 
-## License
+## 🔐 Authentication
 
-ISC
+- Passwords are hashed using BCrypt
+- Email addresses must be unique
+- Role-based access control
 
+## 📝 Tech Stack
+
+- **Frontend**: JavaFX with FXML
+- **Backend**: Java Spring Boot
+- **Database**: SQLite with JDBC
+- **Authentication**: BCrypt password hashing
+- **Build Tool**: Maven
+
+## 📄 License
+
+ISC License
+
+---
+
+Built with ❤️ for the construction industry

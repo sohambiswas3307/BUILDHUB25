@@ -1,11 +1,43 @@
-node_modules/
-client/node_modules/
-.env
-.DS_Store
-dist/
+# Build artifacts
+target/
 build/
-*.log
-*.db
-*.db-journal
-.DS_Store
+*.class
+*.jar
+*.war
 
+# Database files (keep only active one)
+*.db
+*.sqlite
+*.sqlite3
+construction-connect.db
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Archive folder
+_archive/
+
+# Batch files
+*.bat
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
