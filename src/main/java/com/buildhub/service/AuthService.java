@@ -19,7 +19,6 @@ public class AuthService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     private final String SECRET = "your-secret-key-change-this-in-production";
