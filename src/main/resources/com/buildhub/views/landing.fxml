@@ -5,72 +5,89 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController" alignment="CENTER" spacing="40" style="-fx-background-color: linear-gradient(to bottom, #E0E7FF 0%, #C7D2FE 100%);">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController" alignment="CENTER" spacing="50" style="-fx-background-color: #FAFBFC;">
     
     <padding>
-        <Insets top="50" right="50" bottom="50" left="50"/>
+        <Insets top="40" right="60" bottom="40" left="60"/>
     </padding>
     
-    <!-- Header -->
-    <HBox spacing="20" alignment="CENTER">
-        <Text text="🏗️" style="-fx-font-size: 32px;"/>
-        <Text text="BuildHub" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #1E1B4B;" />
+    <!-- Professional Header -->
+    <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-padding: 20;">
+        <HBox spacing="10" alignment="CENTER">
+            <Text text="🏗️" style="-fx-font-size: 36px;"/>
+            <Text text="BuildHub" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: #1E1B4B; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
+        </HBox>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button text="Login" fx:id="loginBtn" onAction="#onLogin" style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;" />
-        <Button text="Register" fx:id="registerBtn" onAction="#onRegister" style="-fx-background-color: white; -fx-text-fill: #8B5CF6; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-border-color: #8B5CF6; -fx-border-width: 2; -fx-cursor: hand;" />
+        <HBox spacing="12" alignment="CENTER">
+            <Button text="Login" fx:id="loginBtn" onAction="#onLogin" 
+                    style="-fx-background-color: transparent; -fx-text-fill: #4B5563; -fx-font-size: 15px; -fx-font-weight: 500; -fx-padding: 12 24; -fx-cursor: hand; -fx-background-radius: 8; -fx-border-width: 0;" />
+            <Button text="Sign Up" fx:id="registerBtn" onAction="#onRegister" 
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: 600; -fx-padding: 12 32; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(139, 92, 246, 0.3), 8, 0, 0, 4);" />
+        </HBox>
     </HBox>
     
     <!-- Hero Section -->
-    <VBox alignment="CENTER" spacing="20">
-        <Text text="Your One-Stop Platform for Construction Projects" 
-              style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-fill: #1E1B4B;" 
-              textAlignment="CENTER" wrappingWidth="900"/>
+    <VBox alignment="CENTER" spacing="24" prefWidth="800">
+        <Text text="Streamline Your Construction Projects" 
+              style="-fx-font-size: 52px; -fx-font-weight: 700; -fx-fill: #0F172A; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" 
+              textAlignment="CENTER" wrappingWidth="800"/>
         
-        <Text text="Connecting Customers, Contractors, and Labours to build the future, together." 
-              style="-fx-font-size: 18px; -fx-fill: #6B7280;" 
-              textAlignment="CENTER" wrappingWidth="700"/>
+        <Text text="Connect with skilled contractors and reliable labours. Manage projects, track budgets, and build with confidence." 
+              style="-fx-font-size: 18px; -fx-fill: #64748B; -fx-line-spacing: 4; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" 
+              textAlignment="CENTER" wrappingWidth="600"/>
         
-        <HBox spacing="20" alignment="CENTER">
-            <Button text="Get Started" fx:id="getStartedBtn" onAction="#onGetStarted" 
-                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15 40; -fx-background-radius: 10; -fx-cursor: hand;" />
+        <HBox spacing="16" alignment="CENTER" style="-fx-padding: 24 0 0 0;">
+            <Button text="Explore Features" fx:id="getStartedBtn" onAction="#onGetStarted" 
+                    style="-fx-background-color: white; -fx-text-fill: #8B5CF6; -fx-font-size: 16px; -fx-font-weight: 600; -fx-padding: 14 32; -fx-background-radius: 10; -fx-cursor: hand; -fx-border-color: #8B5CF6; -fx-border-width: 2; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
+            <Button text="Get Started Free" 
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: 600; -fx-padding: 14 32; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(139, 92, 246, 0.4), 12, 0, 0, 6); -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
         </HBox>
     </VBox>
     
-    <!-- User Roles Section -->
-    <Text text="Choose Your Role" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #1E1B4B;" />
+    <!-- Professional Divider -->
+    <Separator prefWidth="120" style="-fx-background-color: #E2E8F0; -fx-pref-height: 2;"/>
     
-    <HBox spacing="30" alignment="CENTER">
+    <!-- User Roles Section -->
+    <VBox alignment="CENTER" spacing="12">
+        <Text text="Powerful Solutions for Every Role" style="-fx-font-size: 32px; -fx-font-weight: 700; -fx-fill: #0F172A; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
+        <Text text="Select your role to get started" style="-fx-font-size: 16px; -fx-fill: #64748B; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
+    </VBox>
+    
+    <HBox spacing="24" alignment="CENTER">
         <!-- Customer Card -->
-        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30;" spacing="15" alignment="CENTER" prefWidth="280">
-            <Text text="👷" style="-fx-font-size: 48px;"/>
-            <Text text="Customer" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #1E1B4B;"/>
-            <Text text="Post projects, hire contractors and labours, track progress and budgets." 
-                  style="-fx-font-size: 13px; -fx-fill: #6B7280; -fx-wrap-text: true;" 
-                  wrappingWidth="240" textAlignment="CENTER"/>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 40 32; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 4);" 
+              spacing="20" alignment="CENTER" prefWidth="300" minWidth="300">
+            <Text text="👷" style="-fx-font-size: 56px;"/>
+            <Text text="Customer" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-fill: #0F172A; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
+            <Text text="Post projects, hire contractors and labours, track budgets and manage your construction timeline efficiently." 
+                  style="-fx-font-size: 14px; -fx-fill: #64748B; -fx-wrap-text: true; -fx-line-spacing: 4; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" 
+                  wrappingWidth="260" textAlignment="CENTER"/>
             <Button text="Join as Customer" fx:id="joinCustomerBtn" onAction="#onJoinCustomer" 
-                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-padding: 12 28; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
         </VBox>
         
         <!-- Contractor Card -->
-        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30;" spacing="15" alignment="CENTER" prefWidth="280">
-            <Text text="🏗️" style="-fx-font-size: 48px;"/>
-            <Text text="Contractor" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #1E1B4B;"/>
-            <Text text="Bid on projects, manage teams, showcase your portfolio, gain approvals." 
-                  style="-fx-font-size: 13px; -fx-fill: #6B7280; -fx-wrap-text: true;" 
-                  wrappingWidth="240" textAlignment="CENTER"/>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 40 32; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 4);" 
+              spacing="20" alignment="CENTER" prefWidth="300" minWidth="300">
+            <Text text="🏗️" style="-fx-font-size: 56px;"/>
+            <Text text="Contractor" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-fill: #0F172A; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
+            <Text text="Bid on projects, manage teams effectively, showcase your portfolio and build a reputation in the industry." 
+                  style="-fx-font-size: 14px; -fx-fill: #64748B; -fx-wrap-text: true; -fx-line-spacing: 4; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" 
+                  wrappingWidth="260" textAlignment="CENTER"/>
             <Button text="Join as Contractor" fx:id="joinContractorBtn" onAction="#onJoinContractor" 
-                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-padding: 12 28; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
         </VBox>
         
         <!-- Labour Card -->
-        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30;" spacing="15" alignment="CENTER" prefWidth="280">
-            <Text text="🛠️" style="-fx-font-size: 48px;"/>
-            <Text text="Labour" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #1E1B4B;"/>
-            <Text text="Find job opportunities, track work hours, build your reputation and get paid." 
-                  style="-fx-font-size: 13px; -fx-fill: #6B7280; -fx-wrap-text: true;" 
-                  wrappingWidth="240" textAlignment="CENTER"/>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 40 32; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 4);" 
+              spacing="20" alignment="CENTER" prefWidth="300" minWidth="300">
+            <Text text="🛠️" style="-fx-font-size: 56px;"/>
+            <Text text="Labour" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-fill: #0F172A; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
+            <Text text="Find job opportunities nearby, track work hours, build your professional reputation and receive fair payments." 
+                  style="-fx-font-size: 14px; -fx-fill: #64748B; -fx-wrap-text: true; -fx-line-spacing: 4; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" 
+                  wrappingWidth="260" textAlignment="CENTER"/>
             <Button text="Join as Labour" fx:id="joinLabourBtn" onAction="#onJoinLabour" 
-                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-padding: 12 28; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
         </VBox>
     </HBox>
 </VBox>
