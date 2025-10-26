@@ -65,7 +65,18 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8 relative">
+      {/* Back Button */}
+      <button
+        onClick={() => window.history.back()}
+        className="absolute top-4 left-4 flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-colors z-10"
+        title="Go back"
+      >
+        <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
       <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl font-extrabold text-gray-900">
