@@ -282,6 +282,31 @@ public class DatabaseService {
         }
     }
 
+    public boolean updateProject(int projectId, String title, String description, String location, Double budget) {
+        synchronized (DatabaseService.class) {
+            try {
+                String sql = "UPDATE projects SET title = ?, description = ?, location = ?, budget = ? WHERE id = ?";
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
+                stmt.setString(1, title);
+                stmt.setString(2, description);
+                stmt.setString(3, location);
+                stmt.setDouble(4, budget);
+                stmt.setInt(5, projectId);
+                int rowsAffected = stmt.executeUpdate();
+                stmt.close();
+                if (rowsAffected > 0) {
+                    System.out.println("✅ Project updated: " + projectId);
+                    return true;
+                }
+                return false;
+            } catch (SQLException e) {
+                System.err.println("❌ Error updating project: " + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+
     public boolean deleteProject(int projectId) {
         synchronized (DatabaseService.class) {
             try {
