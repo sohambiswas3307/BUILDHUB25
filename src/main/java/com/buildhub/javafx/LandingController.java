@@ -1,9 +1,12 @@
 package com.buildhub.javafx;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 public class LandingController {
 
@@ -21,45 +24,76 @@ public class LandingController {
 
     @FXML
     private void onLogin() {
-        showAlert("Login", "Opening login page...");
+        try {
+            Stage stage = (Stage) loginBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/login.fxml"));
+            stage.setScene(new Scene(root, 800, 600));
+            stage.setTitle("Login - BuildHub");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void onRegister() {
-        showAlert("Register", "Opening registration page...");
+        try {
+            Stage stage = (Stage) registerBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
+            stage.setScene(new Scene(root, 800, 600));
+            stage.setTitle("Register - BuildHub");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void onGetStarted() {
-        showAlert("Get Started", "Welcome to BuildHub! Let's build something amazing together.");
+        onRegister();
     }
 
     @FXML
     private void onLearnMore() {
-        showAlert("Learn More", "BuildHub connects Customers, Contractors, and Labours for efficient project management.");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About BuildHub");
+        alert.setHeaderText(null);
+        alert.setContentText("BuildHub connects Customers, Contractors, and Labours for efficient project management. Create projects, find professionals, and build with confidence.");
+        alert.showAndWait();
     }
 
     @FXML
     private void onJoinCustomer() {
-        showAlert("Join as Customer", "Register as a Customer to post projects and hire skilled professionals.");
+        try {
+            Stage stage = (Stage) learnMoreBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
+            stage.setScene(new Scene(root, 800, 600));
+            stage.setTitle("Register as Customer - BuildHub");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void onJoinContractor() {
-        showAlert("Join as Contractor", "Register as a Contractor to bid on projects and manage your portfolio.");
+        try {
+            Stage stage = (Stage) learnMoreBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
+            stage.setScene(new Scene(root, 800, 600));
+            stage.setTitle("Register as Contractor - BuildHub");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void onJoinLabour() {
-        showAlert("Join as Labour", "Register as Labour to find job opportunities and build your reputation.");
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        try {
+            Stage stage = (Stage) learnMoreBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
+            stage.setScene(new Scene(root, 800, 600));
+            stage.setTitle("Register as Labour - BuildHub");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
