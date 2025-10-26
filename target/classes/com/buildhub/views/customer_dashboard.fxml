@@ -11,7 +11,8 @@
     <VBox prefHeight="800" prefWidth="1400" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 10); -fx-spacing: 0;" VBox.vgrow="ALWAYS">
         
         <!-- Header Bar -->
-        <HBox alignment="CENTER_RIGHT" spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12 12 0 0;">
+        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12 12 0 0;">
+            <Button text="← Back" onAction="#onBack" style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 5; -fx-cursor: hand; -fx-font-weight: bold;"/>
             <Region HBox.hgrow="ALWAYS"/>
             <Label fx:id="userNameLabel" text="Customer" style="-fx-font-size: 14px; -fx-text-fill: #1E1B4B; -fx-font-weight: bold;"/>
             <Button fx:id="logoutBtn" onAction="#onLogout" style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 5; -fx-cursor: hand; -fx-font-weight: bold;" text="Logout"/>
@@ -32,12 +33,13 @@
                 <Text text="NAVIGATION" style="-fx-font-size: 11px; -fx-fill: #A1A1AA; -fx-font-weight: bold; -fx-padding: 10 0 10 0;"/>
                 
                 <VBox spacing="8">
-                    <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-background-color: #8B5CF6; -fx-background-radius: 8; -fx-padding: 12;">
-                        <Label text="📊" style="-fx-font-size: 18px;"/>
-                        <Text text="Dashboard" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-fill: white;"/>
-                    </HBox>
+                    <Button fx:id="dashboardBtn" onAction="#navigateToDashboard" text="📊 Dashboard" style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
                     
-                    <Button fx:id="newProjectBtn" onAction="#onNewProject" text="➕ Add New Project" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px;"/>
+                    <Button fx:id="projectsBtn" onAction="#navigateToProjects" text="📁 My Projects" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px;"/>
+                    
+                    <Button fx:id="newProjectBtn" onAction="#onNewProject" text="➕ New Project" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px;"/>
+                    
+                    <Button fx:id="settingsBtn" onAction="#navigateToSettings" text="⚙️ Settings" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px;"/>
                 </VBox>
                 
                 <Region VBox.vgrow="ALWAYS"/>

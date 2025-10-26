@@ -321,6 +321,24 @@ public class CustomerDashboardController {
     private void onLogout() {
         onBack();
     }
+    
+    @FXML
+    private void navigateToDashboard() {
+        // Already on dashboard, just refresh
+        loadProjects();
+        showAlert("Navigation", "You are on the Dashboard");
+    }
+    
+    @FXML
+    private void navigateToProjects() {
+        // Scroll to projects section
+        showAlert("Navigation", "Showing your projects");
+    }
+    
+    @FXML
+    private void navigateToSettings() {
+        showAlert("Settings", "Settings page coming soon!");
+    }
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
