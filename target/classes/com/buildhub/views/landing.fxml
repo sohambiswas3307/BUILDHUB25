@@ -7,7 +7,6 @@
 <?import javafx.scene.text.Text?>
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.LandingController">
-    <stylesheets><fx:include source="/com/buildhub/styles/styles.css"/></stylesheets>
     
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>

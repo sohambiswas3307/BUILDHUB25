@@ -1,9 +1,11 @@
+com\buildhub\javafx\BuildHubFxApp.class
+com\buildhub\javafx\LandingController.class
+com\buildhub\config\CorsConfig.class
+com\buildhub\service\AuthService.class
+com\buildhub\controller\HealthController.class
+com\buildhub\controller\ProjectController.class
 com\buildhub\BuildHubApplication.class
 com\buildhub\config\DatabaseConfig.class
 com\buildhub\model\Project.class
-com\buildhub\config\CorsConfig.class
 com\buildhub\model\User.class
-com\buildhub\service\AuthService.class
 com\buildhub\controller\AuthController.class
-com\buildhub\controller\HealthController.class
-com\buildhub\controller\ProjectController.class
