@@ -34,7 +34,6 @@
             <Text text="Quick Actions" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
             <Button onAction="#onAddItem" text="📦 Add Item" style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-cursor: hand; -fx-pref-width: 200;"/>
             <Button onAction="#onViewReports" text="📊 View Reports" style="-fx-background-color: #3B82F6; -fx-text-fill: white; -fx-cursor: hand; -fx-pref-width: 200;"/>
-            <Button onAction="#onDeleteProject" text="🗑️ Delete Project" style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-cursor: hand; -fx-pref-width: 200;"/>
         </VBox>
         
         <!-- Main Content Area -->
