@@ -8,21 +8,21 @@
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buildhub.javafx.ContractorDashboardController" prefHeight="800" prefWidth="1400" style="-fx-background-color: #F8F9FA; -fx-padding: 0;">
     
     <!-- Main Container with Shadow -->
-    <VBox prefHeight="800" prefWidth="1400" style="-fx-background-color: #F8F9FA; -fx-border-color: #000000; -fx-border-width: 1; -fx-spacing: 0;" VBox.vgrow="ALWAYS">
+    <VBox prefHeight="800" prefWidth="1400" style="-fx-background-color: #F8F9FA; -fx-border-color: #E5E7EB; -fx-border-width: 1; -fx-border-radius: 12; -fx-spacing: 0;" VBox.vgrow="ALWAYS">
         
         <!-- Header Bar -->
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white; -fx-padding: 20;">
-            <Button text="← Back" onAction="#onBack" style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 0; -fx-cursor: hand; -fx-font-weight: bold;"/>
+            <Button text="← Back" onAction="#onBack" style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;"/>
             <Region HBox.hgrow="ALWAYS"/>
             <Label fx:id="userNameLabel" text="Contractor" style="-fx-font-size: 14px; -fx-text-fill: #000000; -fx-font-weight: bold;"/>
-            <Button fx:id="logoutBtn" onAction="#onLogout" style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 0; -fx-cursor: hand; -fx-font-weight: bold;" text="Logout"/>
+            <Button fx:id="logoutBtn" onAction="#onLogout" style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;" text="Logout"/>
         </HBox>
         
         <!-- Body -->
         <HBox spacing="0" prefHeight="760" VBox.vgrow="ALWAYS">
             
             <!-- White Left Sidebar -->
-            <VBox prefWidth="260" style="-fx-background-color: #F3F4F6; -fx-border-color: #000000; -fx-border-width: 0 1 0 0; -fx-padding: 30;" spacing="0">
+            <VBox prefWidth="260" style="-fx-background-color: #F3F4F6; -fx-border-color: #E5E7EB; -fx-border-width: 0 1 0 0; -fx-padding: 30;" spacing="0">
                 <HBox spacing="10" alignment="CENTER_LEFT">
                     <Text text="🏗️" style="-fx-font-size: 24px;"/>
                     <Text text="BUILDHUB" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #000000;"/>
@@ -33,7 +33,7 @@
                 <Text text="NAVIGATION" style="-fx-font-size: 11px; -fx-fill: #6B7280; -fx-font-weight: bold; -fx-padding: 10 0 10 0;"/>
                 
                 <VBox spacing="8">
-                    <Button fx:id="dashboardBtn" onAction="#navigateToDashboard" text="📊 Dashboard" style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 0;"/>
+                    <Button fx:id="dashboardBtn" onAction="#navigateToDashboard" text="📊 Dashboard" style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
                     
                     <Button fx:id="submitCompletionBtn" onAction="#onSubmitCompletion" text="✅ Submit Completion" style="-fx-background-color: transparent; -fx-text-fill: #000000; -fx-padding: 12; -fx-cursor: hand; -fx-alignment: CENTER_LEFT; -fx-font-size: 14px;"/>
                     
@@ -80,11 +80,11 @@
                 <!-- Action Buttons -->
                 <HBox spacing="15">
                     <Button text="📋 Submit Completion" onAction="#onSubmitCompletion" 
-                            style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-cursor: hand; -fx-background-radius: 0; -fx-font-size: 14px;"/>
+                            style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-cursor: hand; -fx-background-radius: 8; -fx-font-size: 14px;"/>
                     <Button text="📸 Update Portfolio" onAction="#onUpdatePortfolio" 
-                            style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-cursor: hand; -fx-background-radius: 0; -fx-font-size: 14px;"/>
+                            style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-cursor: hand; -fx-background-radius: 8; -fx-font-size: 14px;"/>
                     <Button text="💼 Update Profile" onAction="#onUpdateProfile" 
-                            style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-cursor: hand; -fx-background-radius: 0; -fx-font-size: 14px;"/>
+                            style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-cursor: hand; -fx-background-radius: 8; -fx-font-size: 14px;"/>
                 </HBox>
                 
                 <!-- Portfolio Showcase -->

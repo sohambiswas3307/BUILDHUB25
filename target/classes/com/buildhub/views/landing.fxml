@@ -53,7 +53,7 @@
     
     <HBox spacing="18" alignment="CENTER">
         <!-- Customer Card -->
-        <VBox style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #000000; -fx-border-width: 1; -fx-padding: 30 24;" 
+        <VBox style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #E5E7EB; -fx-border-width: 1; -fx-padding: 30 24;" 
               spacing="16" alignment="CENTER" prefWidth="250" minWidth="250">
             <Text text="👷" style="-fx-font-size: 48px;"/>
             <Text text="Customer" style="-fx-font-size: 22px; -fx-font-weight: 700; -fx-fill: #000000; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
@@ -65,7 +65,7 @@
         </VBox>
         
         <!-- Contractor Card -->
-        <VBox style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #000000; -fx-border-width: 1; -fx-padding: 30 24;" 
+        <VBox style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #E5E7EB; -fx-border-width: 1; -fx-padding: 30 24;" 
               spacing="16" alignment="CENTER" prefWidth="250" minWidth="250">
             <Text text="🏗️" style="-fx-font-size: 48px;"/>
             <Text text="Contractor" style="-fx-font-size: 22px; -fx-font-weight: 700; -fx-fill: #000000; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
@@ -77,7 +77,7 @@
         </VBox>
         
         <!-- Labour Card -->
-        <VBox style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #000000; -fx-border-width: 1; -fx-padding: 30 24;" 
+        <VBox style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #E5E7EB; -fx-border-width: 1; -fx-padding: 30 24;" 
               spacing="16" alignment="CENTER" prefWidth="250" minWidth="250">
             <Text text="🛠️" style="-fx-font-size: 48px;"/>
             <Text text="Labour" style="-fx-font-size: 22px; -fx-font-weight: 700; -fx-fill: #000000; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;"/>
