@@ -259,6 +259,81 @@ public class DatabaseService {
         return projects;
     }
 
+    public boolean createProject(int customerId, String title, String description, String location, Double budget) {
+        synchronized (DatabaseService.class) {
+            try {
+                String sql = "INSERT INTO projects (customer_id, title, description, location, budget, status) VALUES (?, ?, ?, ?, ?, ?)";
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
+                stmt.setInt(1, customerId);
+                stmt.setString(2, title);
+                stmt.setString(3, description);
+                stmt.setString(4, location);
+                stmt.setDouble(5, budget);
+                stmt.setString(6, "pending");
+                stmt.executeUpdate();
+                stmt.close();
+                System.out.println("✅ Project created: " + title);
+                return true;
+            } catch (SQLException e) {
+                System.err.println("❌ Error creating project: " + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+
+    public boolean deleteProject(int projectId) {
+        synchronized (DatabaseService.class) {
+            try {
+                String sql = "DELETE FROM projects WHERE id = ?";
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
+                stmt.setInt(1, projectId);
+                int rowsAffected = stmt.executeUpdate();
+                stmt.close();
+                if (rowsAffected > 0) {
+                    System.out.println("✅ Project deleted: " + projectId);
+                    return true;
+                }
+                return false;
+            } catch (SQLException e) {
+                System.err.println("❌ Error deleting project: " + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+
+    public List<Map<String, Object>> getAllProjects() {
+        List<Map<String, Object>> projects = new ArrayList<>();
+        synchronized (DatabaseService.class) {
+            try {
+                String sql = "SELECT p.*, u.name as customer_name FROM projects p LEFT JOIN users u ON p.customer_id = u.id";
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    Map<String, Object> project = new HashMap<>();
+                    project.put("id", rs.getInt("id"));
+                    project.put("customer_id", rs.getInt("customer_id"));
+                    project.put("title", rs.getString("title"));
+                    project.put("description", rs.getString("description"));
+                    project.put("location", rs.getString("location"));
+                    project.put("budget", rs.getDouble("budget"));
+                    project.put("status", rs.getString("status"));
+                    project.put("customer_name", rs.getString("customer_name"));
+                    project.put("created_at", rs.getString("created_at"));
+                    projects.add(project);
+                }
+                rs.close();
+                stmt.close();
+            } catch (SQLException e) {
+                System.err.println("❌ Error fetching projects: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return projects;
+    }
+
     public static void close() {
         synchronized (DatabaseService.class) {
             try {
