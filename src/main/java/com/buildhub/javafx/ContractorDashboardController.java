@@ -57,34 +57,60 @@ public class ContractorDashboardController {
     private void loadPortfolio() {
         portfolioList.getChildren().clear();
         
-        // Sample portfolio items - TODO: Load from database
-        String[] projects = {
-            "🏢 Tech Tower - 2023",
-            "🏗️ Bridge Construction - 2022",
-            "🏠 Residential Complex - 2021"
+        // Sample portfolio items with detailed information
+        String[][] projects = {
+            {"🏢 Tech Tower - 2023", "Commercial building construction with modern architecture", "₹45L", "2023-06-15", "Excellent - 5.0/5", "Timely completion with premium quality"},
+            {"🏗️ Bridge Construction - 2022", "Large-scale infrastructure project", "₹80L", "2022-11-20", "Excellent - 4.9/5", "Met all safety standards and deadlines"},
+            {"🏠 Residential Complex - 2021", "Multi-unit residential development", "₹25L", "2021-08-10", "Excellent - 4.8/5", "Customer satisfaction exceeded expectations"}
         };
         
-        for (String project : projects) {
+        for (String[] project : projects) {
             VBox projectCard = new VBox(10);
             projectCard.setStyle("-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #E5E7EB; -fx-border-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0, 0, 2);");
             
-            Label projectLabel = new Label(project);
+            Label projectLabel = new Label(project[0]);
             projectLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1E1B4B;");
             
-            Label description = new Label("Successfully completed with excellent customer satisfaction");
+            Label description = new Label(project[1]);
             description.setStyle("-fx-font-size: 13px; -fx-text-fill: #6B7280;");
             description.setWrapText(true);
+            
+            HBox info = new HBox(15);
+            Label budgetLabel = new Label("💰 " + project[2]);
+            budgetLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #10B981;");
+            
+            Label ratingLabel = new Label(project[4]);
+            ratingLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #8B5CF6;");
+            
+            info.getChildren().addAll(budgetLabel, ratingLabel);
             
             HBox actions = new HBox(10);
             Button viewBtn = new Button("View Details");
             viewBtn.setStyle("-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-cursor: hand; -fx-padding: 8 16; -fx-background-radius: 6;");
-            viewBtn.setOnAction(e -> showAlert("Portfolio", project));
+            viewBtn.setOnAction(e -> showProjectDetails(project));
             
             actions.getChildren().addAll(viewBtn);
             
-            projectCard.getChildren().addAll(projectLabel, description, actions);
+            projectCard.getChildren().addAll(projectLabel, description, info, actions);
             portfolioList.getChildren().add(projectCard);
         }
+    }
+    
+    private void showProjectDetails(String[] project) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("📋 Project Portfolio Details");
+        alert.setHeaderText(project[0]);
+        
+        String content = "📋 Description:\n" + project[1] + "\n\n" +
+                         "💰 Project Budget: " + project[2] + "\n" +
+                         "📅 Completion Date: " + project[3] + "\n" +
+                         project[4] + "\n\n" +
+                         "📊 Notes:\n" + project[5] + "\n\n" +
+                         "✅ Status: Successfully Completed";
+        
+        alert.setContentText(content);
+        alert.getDialogPane().setPrefWidth(500);
+        alert.showAndWait();
     }
 
     @FXML
