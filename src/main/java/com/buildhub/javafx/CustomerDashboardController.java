@@ -1,5 +1,7 @@
 package com.buildhub.javafx;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -12,6 +14,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.util.Pair;
 import java.util.List;
 import java.util.Map;
@@ -310,11 +313,31 @@ public class CustomerDashboardController {
         try {
             Stage stage = (Stage) logoutBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/landing.fxml"));
-            stage.setScene(new Scene(root, 1000, 700));
+            Scene scene = new Scene(root, 1000, 700);
             stage.setTitle("BuildHub - Construction Platform");
+            transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    private void transitionToScene(Stage stage, Scene newScene) {
+        // Fade out current scene with smooth easing
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(400), stage.getScene().getRoot());
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setInterpolator(Interpolator.EASE_OUT);
+        fadeOut.setOnFinished(e -> {
+            // Set new scene
+            stage.setScene(newScene);
+            // Fade in new scene with smooth easing
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newScene.getRoot());
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.setInterpolator(Interpolator.EASE_IN);
+            fadeIn.play();
+        });
+        fadeOut.play();
     }
 
     @FXML

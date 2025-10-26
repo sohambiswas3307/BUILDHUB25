@@ -1,11 +1,14 @@
 package com.buildhub.javafx;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class RegisterController {
     private DatabaseService dbService = new DatabaseService();
@@ -99,8 +102,9 @@ public class RegisterController {
     private void onLoginClick() throws Exception {
         Stage stage = (Stage) registerBtn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/login.fxml"));
-        stage.setScene(new Scene(root, 800, 600));
+        Scene scene = new Scene(root, 1000, 700);
         stage.setTitle("Login - BuildHub");
+        transitionToScene(stage, scene);
     }
 
     @FXML
@@ -108,8 +112,9 @@ public class RegisterController {
         try {
             Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/landing.fxml"));
-            stage.setScene(new Scene(root, 1000, 700));
+            Scene scene = new Scene(root, 1000, 700);
             stage.setTitle("BuildHub - Construction Platform");
+            transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,8 +124,28 @@ public class RegisterController {
         Stage stage = (Stage) registerBtn.getScene().getWindow();
         String dashboardPath = "/com/buildhub/views/" + role + "_dashboard.fxml";
         Parent root = FXMLLoader.load(getClass().getResource(dashboardPath));
-        stage.setScene(new Scene(root, 1200, 800));
+        Scene scene = new Scene(root, 1400, 800);
         stage.setTitle(role.substring(0, 1).toUpperCase() + role.substring(1) + " Dashboard - BuildHub");
+        transitionToScene(stage, scene);
+    }
+    
+    private void transitionToScene(Stage stage, Scene newScene) {
+        // Fade out current scene with smooth easing
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(400), stage.getScene().getRoot());
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setInterpolator(Interpolator.EASE_OUT);
+        fadeOut.setOnFinished(e -> {
+            // Set new scene
+            stage.setScene(newScene);
+            // Fade in new scene with smooth easing
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newScene.getRoot());
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.setInterpolator(Interpolator.EASE_IN);
+            fadeIn.play();
+        });
+        fadeOut.play();
     }
 
     private void showAlert(String title, String message) {
