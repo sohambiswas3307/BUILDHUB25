@@ -60,7 +60,7 @@ BuildHub also supports a **Java Spring Boot** backend with **JDBC**:
 mvn spring-boot:run
 ```
 
-Runs on port 8080. See [JAVA_SETUP.md](JAVA_SETUP.md) for details.
+Runs on port 8080. See [JAVA_SETUP.md](docs/JAVA_SETUP.md) for details.
 
 **Why Java?**
 - Production-ready enterprise framework
