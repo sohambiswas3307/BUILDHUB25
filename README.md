@@ -12,80 +12,65 @@ A one-stop platform connecting Customers, Contractors, and Labours. Designed to 
 
 ## Tech Stack
 
-- **Backend**: Node.js/Express (port 5000) OR Java Spring Boot (port 8080)
+- **Desktop Application**: JavaFX (Native UI)
+- **Backend**: Java Spring Boot
 - **Database**: SQLite3 with JDBC
-- **Frontend**: React, Tailwind CSS
-- **Authentication**: JWT
+- **Authentication**: JWT with BCrypt password hashing
 
 ## Getting Started
 
-### 🚀 Quick Start (Simple - Recommended)
+### 🖥️ Running the JavaFX Desktop Application
+
+BuildHub is a **native desktop application** built with JavaFX:
 
 ```bash
-# 1. Install all dependencies
-npm run install-all
-
-# 2. Build and start unified server
-npm run build-and-start
-```
-
-**This starts everything on a single port!** 
-- Visit: http://localhost:5000
-- API: http://localhost:5000/api
-- Backend + Frontend + Database all running together
-
-### 💻 Development Mode
-
-```bash
-npm run dev
-```
-
-Runs both servers separately:
-- Frontend: http://localhost:3000 (with hot reload)
-- Backend: http://localhost:5000
-
-### 📦 Production
-
-```bash
-npm start
-```
-
-Runs the unified server serving the built React app.
-
-### ☕ Java Backend (Alternative)
-
-BuildHub also supports a **Java Spring Boot** backend with **JDBC**:
-
-```bash
-mvn spring-boot:run
-```
-
-Runs on port 8080. See [JAVA_SETUP.md](docs/JAVA_SETUP.md) for details.
-
-### 🖥️ JavaFX Desktop Application
-
-BuildHub includes a **native desktop application** built with JavaFX:
-
-```bash
-mvn clean package
+# Compile and run the application
 mvn javafx:run
 ```
 
-Opens a native desktop window. See [JAVAFX_SETUP.md](docs/JAVAFX_SETUP.md) for details.
+This opens a native desktop window with the full BuildHub interface.
 
-**Why Java?**
-- Production-ready enterprise framework
-- Robust JDBC connection pooling
-- Type-safe, compiled code
-- Perfect for heavy computation or specialized APIs
-- **Desktop UI**: Native look and feel with JavaFX
+### ☕ Java Spring Boot Backend (API Server)
+
+To run the Spring Boot backend API server:
+
+```bash
+# Run the Spring Boot server
+mvn spring-boot:run
+```
+
+Runs on port 8080. Provides REST API endpoints for user management, authentication, and project operations.
+
+### 🔨 Building for Production
+
+```bash
+# Clean and compile
+mvn clean compile
+
+# Run JavaFX application
+mvn javafx:run
+
+# Or run Spring Boot server
+mvn spring-boot:run
+```
+
+See [docs/JAVAFX_SETUP.md](docs/JAVAFX_SETUP.md) and [docs/JAVA_SETUP.md](docs/JAVA_SETUP.md) for detailed setup instructions.
+
+**Why Java/JavaFX?**
+- **Native Desktop UI**: Better performance and native look-and-feel
+- **Production-Ready**: Enterprise-grade framework
+- **Type-Safe**: Compile-time error checking
+- **Database Access**: Direct JDBC connection to SQLite
+- **Cross-Platform**: Works on Windows, macOS, and Linux
+- **No Browser Required**: Run as a standalone desktop application
 
 ### Usage
 
-1. Register as Customer, Contractor, or Labour
-2. Access your dedicated dashboard
-3. Create projects, post jobs, or find opportunities
-4. Manage your workflow efficiently
+1. Launch the application with `mvn javafx:run`
+2. Register as Customer, Contractor, or Labour
+3. Access your dedicated dashboard
+4. Create projects, post jobs, or find opportunities
+5. Manage your workflow efficiently
 
 ## User Roles
 
@@ -94,28 +79,27 @@ Opens a native desktop window. See [JAVAFX_SETUP.md](docs/JAVAFX_SETUP.md) for d
 - Hire contractors and labours
 - Track project progress
 - Manage budgets and payments
+- Edit and delete projects
 
 ### Contractor
 - Bid on projects
 - Manage teams and labours
 - Track work progress
 - Get paid for completed work
+- Build portfolio and ratings
 
 ### Labour
 - Find job opportunities
 - Apply for positions
 - Track work hours
 - Receive payments
+- Build reputation through ratings
 
-## Environment Variables
+## Configuration
 
-Create a `.env` file in the root directory:
+The application uses SQLite for database storage. The database file `buildhub.db` is created automatically in the project directory.
 
-```
-DB_PATH=./construction-connect.db
-JWT_SECRET=your-secret-key
-PORT=5000
-```
+Main configuration file: `src/main/resources/application.properties`
 
 ## License
 

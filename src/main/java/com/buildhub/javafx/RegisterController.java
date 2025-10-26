@@ -72,7 +72,26 @@ public class RegisterController {
                 e.printStackTrace();
             }
         } else {
-            showAlert("Error", "Registration failed. Email may already exist.");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration Failed");
+            alert.setHeaderText("Email Already Exists");
+            alert.setContentText("An account with this email already exists. Please try logging in instead.");
+            ButtonType loginButton = new ButtonType("Go to Login", ButtonBar.ButtonData.OK_DONE);
+            ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(loginButton, cancelButton);
+            
+            alert.showAndWait().ifPresent(response -> {
+                if (response == loginButton) {
+                    try {
+                        Stage stage = (Stage) registerBtn.getScene().getWindow();
+                        Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/login.fxml"));
+                        stage.setScene(new Scene(root, 800, 600));
+                        stage.setTitle("Login - BuildHub");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 

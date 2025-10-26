@@ -177,6 +177,22 @@ public class DatabaseService {
     public boolean registerUser(String name, String email, String password, String role, String phone, String address) {
         synchronized (DatabaseService.class) {
             try {
+                // Check if email already exists
+                String checkSql = "SELECT COUNT(*) FROM users WHERE email = ?";
+                PreparedStatement checkStmt = getConnection().prepareStatement(checkSql);
+                checkStmt.setString(1, email);
+                ResultSet rs = checkStmt.executeQuery();
+                
+                if (rs.next() && rs.getInt(1) > 0) {
+                    rs.close();
+                    checkStmt.close();
+                    System.err.println("❌ Email already exists: " + email);
+                    return false;
+                }
+                rs.close();
+                checkStmt.close();
+                
+                // Insert new user
                 String sql = "INSERT INTO users (name, email, password, role, phone, address, license_number) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = getConnection().prepareStatement(sql);
                 stmt.setString(1, name);
@@ -192,7 +208,12 @@ public class DatabaseService {
                 return true;
             } catch (SQLException e) {
                 System.err.println("❌ Registration error: " + e.getMessage());
-                e.printStackTrace();
+                // Check if it's a unique constraint violation
+                if (e.getMessage().contains("UNIQUE constraint failed") || e.getMessage().contains("A UNIQUE constraint failed")) {
+                    System.err.println("Email already exists: " + email);
+                } else {
+                    e.printStackTrace();
+                }
                 return false;
             }
         }

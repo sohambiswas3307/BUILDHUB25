@@ -1,5 +1,6 @@
 com\buildhub\javafx\BuildHubFxApp.class
 com\buildhub\javafx\LabourDashboardController.class
+com\buildhub\javafx\LoginController.class
 com\buildhub\service\AuthService.class
 com\buildhub\controller\HealthController.class
 com\buildhub\BuildHubApplication.class

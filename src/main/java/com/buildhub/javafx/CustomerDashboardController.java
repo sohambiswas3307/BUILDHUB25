@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -184,7 +186,7 @@ public class CustomerDashboardController {
             titleBox.getChildren().addAll(titleLabel, statusLabel);
             
             Region spacer = new Region();
-            HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS);
+            HBox.setHgrow(spacer, Priority.ALWAYS);
             
             // Action buttons
             HBox actionBox = new HBox(10);
