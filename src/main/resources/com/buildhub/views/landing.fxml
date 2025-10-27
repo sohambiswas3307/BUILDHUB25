@@ -11,7 +11,7 @@
     <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20;" prefHeight="80" maxHeight="80">
         <HBox spacing="10" alignment="CENTER">
             <Text text="🏗️" style="-fx-font-size: 28px;"/>
-            <Text text="BUILDHUB" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-fill: #000000; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
+            <Text text="BUILDNET" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-fill: #000000; -fx-font-family: 'Segoe UI', 'Arial', sans-serif;" />
         </HBox>
         <Region HBox.hgrow="ALWAYS"/>
         <HBox spacing="10" alignment="CENTER">

@@ -88,7 +88,7 @@ public class RegisterController {
                         Stage stage = (Stage) registerBtn.getScene().getWindow();
                         Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/login.fxml"));
                         stage.setScene(new Scene(root, 800, 600));
-                        stage.setTitle("Login - BuildHub");
+                        stage.setTitle("Login - BuildNET");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -102,7 +102,7 @@ public class RegisterController {
         Stage stage = (Stage) registerBtn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/login.fxml"));
         Scene scene = new Scene(root, 1000, 700);
-        stage.setTitle("Login - BuildHub");
+        stage.setTitle("Login - BuildNET");
         transitionToScene(stage, scene);
     }
 
@@ -112,7 +112,7 @@ public class RegisterController {
             Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/landing.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            stage.setTitle("BuildHub - Construction Platform");
+            stage.setTitle("BuildNET - Construction Platform");
             transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,7 +124,7 @@ public class RegisterController {
         String dashboardPath = "/com/buildhub/views/" + role + "_dashboard.fxml";
         Parent root = FXMLLoader.load(getClass().getResource(dashboardPath));
         Scene scene = new Scene(root, 1400, 800);
-        stage.setTitle(role.substring(0, 1).toUpperCase() + role.substring(1) + " Dashboard - BuildHub");
+        stage.setTitle(role.substring(0, 1).toUpperCase() + role.substring(1) + " Dashboard - BuildNET");
         transitionToScene(stage, scene);
     }
     

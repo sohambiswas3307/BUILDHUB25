@@ -20,7 +20,7 @@
                 <!-- Header -->
                 <VBox alignment="CENTER" spacing="10">
                     <Text text="🏗️" style="-fx-font-size: 48px;"/>
-                    <Text text="BUILDHUB" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: #000000;"/>
+                    <Text text="BUILDNET" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: #000000;"/>
                     <Text text="Create Your Account" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #000000;"/>
                 </VBox>
                 

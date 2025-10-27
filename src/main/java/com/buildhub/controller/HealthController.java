@@ -14,7 +14,7 @@ public class HealthController {
     public ResponseEntity<?> health() {
         return ResponseEntity.ok(Map.of(
             "status", "OK",
-            "message", "BuildHub API is running",
+            "message", "BuildNET API is running",
             "backend", "Java Spring Boot",
             "database", "SQLite with JDBC"
         ));

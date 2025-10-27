@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class BuildHubFxApp extends Application {
+public class BuildNETFxApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -16,7 +16,7 @@ public class BuildHubFxApp extends Application {
             Scene scene = new Scene(loader.load(), 1000, 700);
             
             // Set the scene
-            primaryStage.setTitle("BuildHub - Construction Platform");
+            primaryStage.setTitle("BuildNET - Construction Platform");
             primaryStage.setScene(scene);
             primaryStage.setMinWidth(900);
             primaryStage.setMinHeight(600);
@@ -24,7 +24,7 @@ public class BuildHubFxApp extends Application {
             // Show the stage
             primaryStage.show();
             
-            System.out.println("🚀 BuildHub JavaFX Desktop App Started");
+            System.out.println("🚀 BuildNET JavaFX Desktop App Started");
             System.out.println("📱 Landing page opened successfully");
             
         } catch (Exception e) {

@@ -37,7 +37,7 @@ public class LandingController implements Initializable {
             Stage stage = (Stage) loginBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/login.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            stage.setTitle("Login - BuildHub");
+            stage.setTitle("Login - BuildNET");
             transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class LandingController implements Initializable {
             Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            stage.setTitle("Register - BuildHub");
+            stage.setTitle("Register - BuildNET");
             transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,10 +60,10 @@ public class LandingController implements Initializable {
     @FXML
     private void onGetStarted() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("🏗️ Welcome to BuildHub");
+        alert.setTitle("🏗️ Welcome to BuildNET");
         alert.setHeaderText("Your One-Stop Platform for Construction Projects");
         
-        String content = "BuildHub connects Customers, Contractors, and Labours for efficient construction project management.\n\n" +
+        String content = "BuildNET connects Customers, Contractors, and Labours for efficient construction project management.\n\n" +
                         "✨ Key Features:\n\n" +
                         "👤 For Customers:\n" +
                         "  • Create and manage construction projects\n" +
@@ -93,7 +93,7 @@ public class LandingController implements Initializable {
             Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            stage.setTitle("Register as Customer - BuildHub");
+            stage.setTitle("Register as Customer - BuildNET");
             transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,7 +106,7 @@ public class LandingController implements Initializable {
             Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            stage.setTitle("Register as Contractor - BuildHub");
+            stage.setTitle("Register as Contractor - BuildNET");
             transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();
@@ -119,7 +119,7 @@ public class LandingController implements Initializable {
             Stage stage = (Stage) registerBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/register.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            stage.setTitle("Register as Labour - BuildHub");
+            stage.setTitle("Register as Labour - BuildNET");
             transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();

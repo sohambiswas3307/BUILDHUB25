@@ -313,7 +313,7 @@ public class CustomerDashboardController {
             Stage stage = (Stage) logoutBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/com/buildhub/views/landing.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            stage.setTitle("BuildHub - Construction Platform");
+            stage.setTitle("BuildNET - Construction Platform");
             transitionToScene(stage, scene);
         } catch (Exception e) {
             e.printStackTrace();
