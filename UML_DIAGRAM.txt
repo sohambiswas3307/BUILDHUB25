@@ -1,0 +1,457 @@
+╔════════════════════════════════════════════════════════════════════════════════════════════╗
+║                            BUILDHUB UML CLASS DIAGRAM                                       ║
+╚════════════════════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                CLASS DIAGRAM                                                │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│                 BuildHubFxApp                      │
+├────────────────────────────────────────────────────┤
+│  + main(String[]): void                           │
+│  + start(Stage): void                              │
+│  + loadLandingPage(): void                         │
+├────────────────────────────────────────────────────┤
+│  - currentUser: User                              │
+│  - databaseService: DatabaseService                │
+└──────────────┬─────────────────────────────────────┘
+               │ uses
+               ▼
+┌────────────────────────────────────────────────────┐
+│                 DatabaseService                     │
+│              (Singleton Pattern)                   │
+├────────────────────────────────────────────────────┤
+│  + getInstance(): DatabaseService                  │
+│  + getConnection(): Connection                     │
+│  + initializeTables(): void                        │
+│  + registerUser(...): boolean                      │
+│  + loginUser(...): Map<String, String>             │
+│  + createProject(...): void                        │
+│  + updateProject(...): void                        │
+│  + deleteProject(int): void                       │
+│  + getProjectsByCustomer(int): List<Map<String,String>>│
+│  + getPortfolioItems(int): List<String[]>          │
+│  + addPortfolioItem(...): void                     │
+│  + closeConnection(): void                        │
+├────────────────────────────────────────────────────┤
+│  - instance: DatabaseService                      │
+│  - connection: Connection                          │
+│  - dbPath: String                                  │
+└────────────────────────────────────────────────────┘
+               ▲
+               │ uses
+               │
+┌────────────────────────────────────────────────────┐
+│              LandingController                      │
+├────────────────────────────────────────────────────┤
+│  + initialize(): void                              │
+│  + onLogin(): void                                 │
+│  + onRegister(): void                              │
+│  + onGetStarted(): void                            │
+│  + onJoinCustomer(): void                          │
+│  + onJoinContractor(): void                        │
+│  + onJoinLabour(): void                            │
+│  + transitionToScene(String): void                 │
+│  + createAnimatedBackground(): void                │
+├────────────────────────────────────────────────────┤
+│  - loginBtn: Button                                │
+│  - registerBtn: Button                            │
+│  - getStartedBtn: Button                           │
+│  - joinCustomerBtn: Button                         │
+│  - joinContractorBtn: Button                       │
+│  - joinLabourBtn: Button                           │
+│  - anchorRoot: AnchorPane                          │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│                 LoginController                     │
+├────────────────────────────────────────────────────┤
+│  + initialize(): void                              │
+│  + onLogin(): void                                 │
+│  + onRegisterClick(): void                         │
+│  + onBack(): void                                  │
+│  + transitionToScene(String): void                 │
+├────────────────────────────────────────────────────┤
+│  - emailField: TextField                           │
+│  - passwordField: PasswordField                    │
+│  - loginBtn: Button                                │
+│  - registerLink: Hyperlink                         │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│                RegisterController                   │
+├────────────────────────────────────────────────────┤
+│  + initialize(): void                              │
+│  + onRegister(): void                              │
+│  + onLoginClick(): void                            │
+│  + onBack(): void                                  │
+│  + validateFields(): boolean                       │
+│  + transitionToScene(String): void                 │
+├────────────────────────────────────────────────────┤
+│  - nameField: TextField                            │
+│  - emailField: TextField                           │
+│  - phoneField: TextField                           │
+│  - addressField: TextArea                          │
+│  - passwordField: PasswordField                    │
+│  - confirmPasswordField: PasswordField              │
+│  - customerRadio: RadioButton                      │
+│  - contractorRadio: RadioButton                    │
+│  - labourRadio: RadioButton                        │
+│  - registerBtn: Button                             │
+│  - loginLink: Hyperlink                            │
+│  - roleGroup: ToggleGroup                          │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│            CustomerDashboardController              │
+├────────────────────────────────────────────────────┤
+│  + initialize(): void                              │
+│  + onBack(): void                                  │
+│  + onLogout(): void                                │
+│  + onNewProject(): void                            │
+│  + navigateToDashboard(): void                     │
+│  + navigateToProjects(): void                      │
+│  + navigateToSettings(): void                      │
+│  + loadProjects(): void                            │
+│  + showCreateProjectDialog(): void                 │
+│  + showEditProjectDialog(int): void                │
+│  + onEditProject(int): void                        │
+│  + onDeleteProject(int): void                      │
+│  + createProjectCard(Map<String,String>): VBox    │
+│  + transitionToScene(String): void                 │
+├────────────────────────────────────────────────────┤
+│  - userNameLabel: Label                            │
+│  - logoutBtn: Button                               │
+│  - dashboardBtn: Button                            │
+│  - projectsBtn: Button                             │
+│  - newProjectBtn: Button                           │
+│  - settingsBtn: Button                             │
+│  - projectsList: VBox                              │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│           ContractorDashboardController             │
+├────────────────────────────────────────────────────┤
+│  + initialize(): void                              │
+│  + onBack(): void                                  │
+│  + onLogout(): void                                │
+│  + navigateToDashboard(): void                    │
+│  + navigateToPortfolio(): void                     │
+│  + navigateToSettings(): void                      │
+│  + onSubmitCompletion(): void                      │
+│  + onUpdatePortfolio(): void                       │
+│  + onUpdateProfile(): void                         │
+│  + loadContractorProfile(): void                   │
+│  + loadPortfolio(): void                           │
+│  + showProjectDetails(String[]): void              │
+│  + createPortfolioCard(String[]): VBox             │
+│  + transitionToScene(String): void                 │
+├────────────────────────────────────────────────────┤
+│  - userNameLabel: Label                            │
+│  - logoutBtn: Button                               │
+│  - dashboardBtn: Button                            │
+│  - submitCompletionBtn: Button                     │
+│  - portfolioBtn: Button                            │
+│  - settingsBtn: Button                            │
+│  - profileName: Label                              │
+│  - rating: Label                                   │
+│  - projectsCompleted: Label                        │
+│  - approvalRatio: Label                            │
+│  - specialtyLabel: Label                           │
+│  - budgetRangeLabel: Label                         │
+│  - portfolioList: VBox                             │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│                 User Model                          │
+├────────────────────────────────────────────────────┤
+│  + getId(): int                                    │
+│  + getName(): String                               │
+│  + getEmail(): String                              │
+│  + getRole(): String                               │
+│  + getPhone(): String                              │
+│  + getAddress(): String                            │
+│  + setId(int): void                                │
+│  + setName(String): void                           │
+│  + setEmail(String): void                          │
+│  + setRole(String): void                          │
+│  + setPhone(String): void                          │
+│  + setAddress(String): void                        │
+├────────────────────────────────────────────────────┤
+│  - id: int                                          │
+│  - name: String                                    │
+│  - email: String                                   │
+│  - password: String                                │
+│  - role: String                                    │
+│  - phone: String                                   │
+│  - address: String                                 │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│               Project Model                         │
+├────────────────────────────────────────────────────┤
+│  + getId(): int                                    │
+│  + getTitle(): String                              │
+│  + getDescription(): String                        │
+│  + getBudget(): String                             │
+│  + getCustomerId(): int                            │
+│  + getStatus(): String                             │
+│  + setId(int): void                                │
+│  + setTitle(String): void                          │
+│  + setDescription(String): void                    │
+│  + setBudget(String): void                         │
+│  + setCustomerId(int): void                        │
+│  + setStatus(String): void                         │
+├────────────────────────────────────────────────────┤
+│  - id: int                                          │
+│  - title: String                                   │
+│  - description: String                            │
+│  - budget: String                                  │
+│  - customerId: int                                 │
+│  - status: String                                  │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│             PortfolioItem Model                      │
+├────────────────────────────────────────────────────┤
+│  + getId(): int                                    │
+│  + getName(): String                               │
+│  + getDescription(): String                        │
+│  + getRating(): String                             │
+│  + getContractorId(): int                          │
+│  + setId(int): void                                │
+│  + setName(String): void                            │
+│  + setDescription(String): void                     │
+│  + setRating(String): void                         │
+│  + setContractorId(int): void                      │
+├────────────────────────────────────────────────────┤
+│  - id: int                                          │
+│  - name: String                                    │
+│  - description: String                              │
+│  - rating: String                                  │
+│  - contractorId: int                               │
+└────────────────────────────────────────────────────┘
+
+══════════════════════════════════════════════════════════════════════════════════════════════
+                            RELATIONSHIPS
+══════════════════════════════════════════════════════════════════════════════════════════════
+
+BuildHubFxApp ─────uses─────> DatabaseService
+      │
+      │ contains
+      ▼
+LandingController ──uses──> DatabaseService
+      │
+      │ navigates to
+      ▼
+LoginController ──uses──> DatabaseService
+      │
+      │ validates with
+      ▼
+RegisterController ──uses──> DatabaseService
+      │
+      │ redirects to
+      ▼
+CustomerDashboardController ──uses──> DatabaseService
+                                           │
+                                           ▼
+                                     User Model
+                                     Project Model
+ContractorDashboardController ──uses──> DatabaseService
+                                           │
+                                           ▼
+                                     PortfolioItem Model
+
+══════════════════════════════════════════════════════════════════════════════════════════════
+                            SEQUENCE DIAGRAMS
+══════════════════════════════════════════════════════════════════════════════════════════════
+
+REGISTRATION SEQUENCE:
+───────────────────────────────────────────────────────────────────────────────────────────────
+User    │ RegisterController  │ DatabaseService  │ SQLite DB
+────────┼────────────────────┼──────────────────┼───────────
+   │    │                     │                   │
+   └──┐ │ Enter Details       │                   │
+      │ │                     │                   │
+      ▼ │ Validate Fields     │                   │
+        │                     │                   │
+        │──────Register──────►│                   │
+        │                     │                   │
+        │                     │───insert user────►│
+        │                     │                   │
+        │                     │◄──┐ Success       │
+        │                     │   └───────────────
+        │                     │                   │
+        │◄─────Success────────│                   │
+        │                     │                   │
+        ▼                     │                   │
+     Navigate                 │                   │
+     to Login                 │                   │
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+LOGIN SEQUENCE:
+───────────────────────────────────────────────────────────────────────────────────────────────
+User    │ LoginController     │ DatabaseService  │ SQLite DB
+────────┼────────────────────┼──────────────────┼───────────
+   │    │                     │                   │
+   └──┐ │ Enter Credentials   │                   │
+      │ │                     │                   │
+      ▼ │ Validate Input      │                   │
+        │                     │                   │
+        │──────Login──────────►│                   │
+        │                     │                   │
+        │                     │───SELECT user────►│
+        │                     │                   │
+        │                     │◄──┐ User Data    │
+        │                     │   └───────────────
+        │                     │                   │
+        │                     │ Check Password   │
+        │                     │                   │
+        │◄─────Auth Result────│                   │
+        │                     │                   │
+        ▼                     │                   │
+     If Valid:                │                   │
+     Navigate to              │                   │
+     Dashboard                │                   │
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+PROJECT CREATION SEQUENCE:
+───────────────────────────────────────────────────────────────────────────────────────────────
+User    │ CustomerDashboard   │ DatabaseService  │ SQLite DB
+────────┼────────────────────┼──────────────────┼───────────
+   │    │                     │                   │
+   └──┐ │ Click New Project   │                   │
+      │ │                     │                   │
+      ▼ │ Open Dialog         │                   │
+        │                     │                   │
+        │ Enter Details       │                   │
+        │                     │                   │
+        │──────Create─────────►│                   │
+        │                     │                   │
+        │                     │───INSERT project─►│
+        │                     │                   │
+        │                     │◄──┐ Success       │
+        │                     │   └───────────────
+        │                     │                   │
+        │◄─────Success────────│                   │
+        │                     │                   │
+        ▼                     │                   │
+     Refresh                  │                   │
+     Projects List            │                   │
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+══════════════════════════════════════════════════════════════════════════════════════════════
+                            ACTIVITY DIAGRAM
+══════════════════════════════════════════════════════════════════════════════════════════════
+
+                        [START APPLICATION]
+                                   │
+                                   ▼
+                         [Load Landing Page]
+                                   │
+                                   ▼
+                    ┌──────────────┴──────────────┐
+                    │                             │
+            [Click Login]                  [Click Register]
+                    │                             │
+                    ▼                             ▼
+            [Enter Credentials]          [Enter Details]
+                    │                             │
+                    ▼                             │
+            [Validate User]                      │
+                    │                             │
+                    ▼                             ▼
+            ┌───────┴───────┐             [Create Account]
+            │               │                     │
+        [Valid]         [Invalid]                 │
+            │               │                     ▼
+            │               ▼             [Save to Database]
+            │          [Show Error]                │
+            │               │                      │
+            │               └──────────┐           │
+            │                          │           │
+            └──────────┐               │           │
+                       │               │           │
+                       ▼               ▼           ▼
+              [Select Role-Based Dashboard]
+                       │
+                       ▼
+        ┌───────────────┼───────────────┐
+        │               │               │
+   [Customer]      [Contractor]      [Labour]
+   Dashboard       Dashboard         Dashboard
+        │               │               │
+        ▼               ▼               ▼
+   ┌─────────────────────────────────────┐
+   │     Perform Role-Specific Actions    │
+   └─────────────────────────────────────┘
+                   │
+                   ▼
+              [LOGOUT]
+                   │
+                   ▼
+               [END]
+
+══════════════════════════════════════════════════════════════════════════════════════════════
+                            COMPONENT DIAGRAM
+══════════════════════════════════════════════════════════════════════════════════════════════
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                        JavaFX Application                                     │
+│                                                                               │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                        UI Layer                                        │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐               │  │
+│  │  │   Landing    │  │    Login     │  │   Register   │               │  │
+│  │  │   .fxml      │  │   .fxml      │  │   .fxml      │               │  │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘               │  │
+│  │                                                                       │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐               │  │
+│  │  │  Customer    │  │  Contractor   │  │    Labour    │               │  │
+│  │  │  Dashboard   │  │  Dashboard    │  │  Dashboard   │               │  │
+│  │  │   .fxml      │  │   .fxml      │  │   .fxml      │               │  │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘               │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+│                                        │                                     │
+│                                        ▼                                     │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                    Controller Layer                                     │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐               │  │
+│  │  │  Landing     │  │   Login      │  │   Register   │               │  │
+│  │  │  Controller  │  │  Controller  │  │  Controller  │               │  │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘               │  │
+│  │                                                                       │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐               │  │
+│  │  │  Customer    │  │  Contractor   │  │    Labour    │               │  │
+│  │  │  Dashboard   │  │  Dashboard    │  │  Dashboard   │               │  │
+│  │  │  Controller  │  │  Controller   │  │  Controller  │               │  │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘               │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+│                                        │                                     │
+│                                        ▼                                     │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                      Service Layer                                      │  │
+│  │  ┌─────────────────────────────────────────────────────────────────┐  │  │
+│  │  │              DatabaseService                                     │  │  │
+│  │  │  • Connection Management                                         │  │  │
+│  │  │  • CRUD Operations                                               │  │  │
+│  │  │  • Query Execution                                              │  │  │
+│  │  └─────────────────────────────────────────────────────────────────┘  │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                                    │
+                                                    ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                      Data Access Layer                                       │
+│  ┌────────────────────────────────────────────────────────────────────┐    │
+│  │                      SQLite Database                                │    │
+│  │  • users table                                                      │    │
+│  │  • projects table                                                   │    │
+│  │  • portfolio_items table                                            │    │
+│  │  • purchased_items table                                            │    │
+│  └────────────────────────────────────────────────────────────────────┘    │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+══════════════════════════════════════════════════════════════════════════════════════════════
+
