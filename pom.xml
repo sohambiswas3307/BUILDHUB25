@@ -15,8 +15,8 @@
     <groupId>com.buildhub</groupId>
     <artifactId>buildhub</artifactId>
     <version>1.0.0</version>
-    <name>BuildHub</name>
-    <description>BuildHub - A one-stop platform connecting Customers, Contractors, and Labours</description>
+    <name>BuildNET</name>
+    <description>BuildNET - A one-stop platform connecting Customers, Contractors, and Labours</description>
 
     <properties>
         <java.version>17</java.version>
@@ -119,7 +119,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.buildhub.javafx.BuildHubFxApp</mainClass>
+                    <mainClass>com.buildhub.javafx.BuildNETFxApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
